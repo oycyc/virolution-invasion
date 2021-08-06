@@ -81,8 +81,8 @@ class Defender {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.width = cellSize;
-        this.height = cellSize;
+        this.width = cellSize - cellGap * 2;
+        this.height = cellSize - cellGap * 2;
         this.shooting = false;
         this.health = 100;
         this.timer = 0;
@@ -110,8 +110,8 @@ class Defender {
 
 canvas.addEventListener("click", function() {
     // find out how this works..
-    const gridPositionX = mouse.x - (mouse.x % cellSize);
-    const gridPositionY = mouse.y - (mouse.y % cellSize);
+    const gridPositionX = mouse.x - (mouse.x % cellSize) + cellGap;
+    const gridPositionY = mouse.y - (mouse.y % cellSize) + cellGap;
     // end if clicked on top toolbar display
     if (gridPositionY < cellSize) return;
     // end if defender already exist in same position
