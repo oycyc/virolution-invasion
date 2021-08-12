@@ -88,9 +88,9 @@ function handleGameGrid() {
 
 // DEFENDERS
 const defender1 = new Image();
-defender1.src = "sprites/plant.png";
+defender1.src = "./assets/sprites/plant.png";
 const defender2 = new Image();
-defender2.src = "sprites/red.png";
+defender2.src = "./assets/sprites/red.png";
 
 
 class Defender {
@@ -251,10 +251,10 @@ function chooseDefender() {
 // ENEMIES
 const enemyTypes = [];
 const enemy1 = new Image();
-enemy1.src = "sprites/dino.png";
+enemy1.src = "./assets/sprites/dino.png";
 enemyTypes.push(enemy1);
 const enemy2 = new Image();
-enemy2.src = "sprites/dino2.png";
+enemy2.src = "./assets/sprites/dino2.png";
 enemyTypes.push(enemy2);
 
 
