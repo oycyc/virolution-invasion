@@ -1,5 +1,8 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+ctx.mozImageSmoothingEnabled = false;
+ctx.msImageSmoothingEnabled = false;
+ctx.imageSmoothingEnabled = false;
 canvas.width = 900;
 canvas.height = 600;
 
@@ -44,10 +47,39 @@ console.log(canvasPosition);
 // })
 canvas.style.width = "1400px";
 canvas.style.height = "800px";
+let CSS_WIDTH = 1400;
+let CSS_HEIGHT = 800;
+
+window.addEventListener("resize", function() {
+    canvasPosition = canvas.getBoundingClientRect();
+    CSS_WIDTH = window.innerWidth - 4;
+    CSS_HEIGHT = window.innerHeight - 4;
+
+    // game ratio
+    let ratio = 3 / 2;
+
+    if (CSS_WIDTH / ratio > CSS_HEIGHT) {
+        CSS_WIDTH = CSS_HEIGHT * ratio;
+    } else {
+        CSS_HEIGHT = CSS_WIDTH / ratio;
+    }
+
+    canvas.style.width = CSS_WIDTH + "px";
+    canvas.style.height = CSS_HEIGHT + "px";
+})
+
+function testing() {
+    canvasPosition = canvas.getBoundingClientRect();
+    CSS_WIDTH = window.innerWidth - 4;
+    CSS_HEIGHT = window.innerHeight - 4;
+    canvas.style.width = CSS_WIDTH + "px";
+    canvas.style.height = CSS_HEIGHT + "px";
+}
+
+testing()
+
 canvas.addEventListener("mousemove", function(event) {
-    let CSS_WIDTH = 1400;
     let WIDTH_SIZE_CHANGE = CSS_WIDTH / 900;
-    let CSS_HEIGHT = 800;
     let HEIGHT_SIZE_CHANGE = CSS_HEIGHT / 600;
 
 
@@ -589,9 +621,6 @@ function collision(first, second) {
 // eplace the if keyword with return, no need to nest extra
 
 
-window.addEventListener("resize", function() {
-    canvasPosition = canvas.getBoundingClientRect();
-})
 
 
 // place defenders
