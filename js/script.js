@@ -37,10 +37,27 @@ canvas.addEventListener("mouseup", function() {
 
 let canvasPosition = canvas.getBoundingClientRect();
 console.log(canvasPosition);
-canvas.addEventListener("mousemove", function(event) {
-    mouse.x = event.x - canvasPosition.left;
-    mouse.y = event.y - canvasPosition.top;
+// canvas.addEventListener("mousemove", function(event) {
+//     mouse.x = event.x - canvasPosition.left;
+//     mouse.y = event.y - canvasPosition.top;
 
+// })
+canvas.style.width = "1400px";
+canvas.style.height = "800px";
+canvas.addEventListener("mousemove", function(event) {
+    let CSS_WIDTH = 1400;
+    let WIDTH_SIZE_CHANGE = CSS_WIDTH / 900;
+    let CSS_HEIGHT = 800;
+    let HEIGHT_SIZE_CHANGE = CSS_HEIGHT / 600;
+
+
+    mouse.x = (event.x - canvasPosition.left)/WIDTH_SIZE_CHANGE;
+    mouse.y = (event.y - canvasPosition.top)/HEIGHT_SIZE_CHANGE;
+
+    // bug smaller screen zoom messes canvas x y up
+    // mouse.x -= 900/2;
+    // mouse.y -= 800/2;
+    // 350, 300
 })
 
 canvas.addEventListener("mouseleave", function() {
@@ -67,6 +84,7 @@ class Cell {
         if (mouse.x && mouse.y && collision(this, mouse)) {
             ctx.strokeStyle = "black";
             ctx.strokeRect(this.x, this.y, this.width, this.height);
+            ctx.fillText(`${this.x} ${this.y}`, this.x, this.y)
         }
     }
 }
@@ -310,7 +328,9 @@ function handleEnemies() {
         enemies[i].update();
         enemies[i].draw();
         if (enemies[i].x < 0) {
-            gameOver = true;
+            // gameOver = true;
+            // temp to figure out resizing
+            continue;
         }
 
         if (enemies[i].health <= 0) {
@@ -341,7 +361,7 @@ function handleEnemies() {
         if (enemiesInterval > 120) {
             enemiesInterval -= 100;
         }
-        console.log(enemyPositions);
+        // console.log(enemyPositions);
     }
 }
 
@@ -390,7 +410,7 @@ function handleProjectiles() {
             projectiles.splice(i, 1);
             i--;
         }
-        console.log("projectiles " + projectiles.length)
+        // console.log("projectiles " + projectiles.length)
     }
 }
 
