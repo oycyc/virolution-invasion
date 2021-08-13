@@ -72,6 +72,17 @@ function testing() {
     canvasPosition = canvas.getBoundingClientRect();
     CSS_WIDTH = window.innerWidth - 4;
     CSS_HEIGHT = window.innerHeight - 4;
+
+
+    // game ratio
+    let ratio = 3 / 2;
+
+    if (CSS_WIDTH / ratio > CSS_HEIGHT) {
+        CSS_WIDTH = CSS_HEIGHT * ratio;
+    } else {
+        CSS_HEIGHT = CSS_WIDTH / ratio;
+    }
+
     canvas.style.width = CSS_WIDTH + "px";
     canvas.style.height = CSS_HEIGHT + "px";
 }
@@ -79,6 +90,7 @@ function testing() {
 testing()
 
 canvas.addEventListener("mousemove", function(event) {
+    canvasPosition = canvas.getBoundingClientRect();
     let WIDTH_SIZE_CHANGE = CSS_WIDTH / 900;
     let HEIGHT_SIZE_CHANGE = CSS_HEIGHT / 600;
 
