@@ -1,33 +1,33 @@
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
-ctx.mozImageSmoothingEnabled = false;
-ctx.msImageSmoothingEnabled = false;
-ctx.imageSmoothingEnabled = false;
-canvas.width = 900;
-canvas.height = 600;
+// const canvas = document.getElementById("canvas");
+// export const ctx = canvas.getContext("2d");
+// ctx.mozImageSmoothingEnabled = false;
+// ctx.msImageSmoothingEnabled = false;
+// ctx.imageSmoothingEnabled = false;
+// canvas.width = 900;
+// canvas.height = 600;
 
-// global variables
-const cellSize = 100;
-const cellGap = 3;
-const gameGrid = [];
-const defenders = [];
-const enemies = [];
-const enemyPositions = [];
-let enemiesInterval = 600;
-let numberOfResources = 300;
-let score = 0;
-let frame = 0;
-let gameOver = false;
-const projectiles = [];
+// // global variables
+// const cellSize = 100;
+// const cellGap = 3;
+// const gameGrid = [];
+// const defenders = [];
+// const enemies = [];
+// const enemyPositions = [];
+// let enemiesInterval = 600;
+// let numberOfResources = 300;
+// let score = 0;
+// let frame = 0;
+// let gameOver = false;
+// const projectiles = [];
 
-// mouse 
-const mouse = {
-    x: 0,
-    y: 0,
-    width: 0.1,
-    height: 0.1,
-    clicked: false
-}
+// // mouse 
+// export const mouse = {
+//     x: 0,
+//     y: 0,
+//     width: 0.1,
+//     height: 0.1,
+//     clicked: false
+// }
 
 canvas.addEventListener("mousedown", function() {
     mouse.clicked = true;
@@ -50,27 +50,14 @@ canvas.style.height = "800px";
 let CSS_WIDTH = 1400;
 let CSS_HEIGHT = 800;
 
-window.addEventListener("resize", function() {
-    canvasPosition = canvas.getBoundingClientRect();
-    CSS_WIDTH = window.innerWidth - 4;
-    CSS_HEIGHT = window.innerHeight - 4;
-
-    // game ratio
-    let ratio = 3 / 2;
-
-    if (CSS_WIDTH / ratio > CSS_HEIGHT) {
-        CSS_WIDTH = CSS_HEIGHT * ratio;
-    } else {
-        CSS_HEIGHT = CSS_WIDTH / ratio;
-    }
-
-    canvas.style.width = CSS_WIDTH + "px";
-    canvas.style.height = CSS_HEIGHT + "px";
-})
+window.addEventListener("resize", testing);
 
 function testing() {
     canvasPosition = canvas.getBoundingClientRect();
-    CSS_WIDTH = window.innerWidth - 4;
+    // add some logic where if it's full screen then just normal window.innerWidth - 4
+    // but if it's a smaller screen add more percentage to the 0.1
+    // then assign the extra space to the divs?
+    CSS_WIDTH = window.innerWidth - (window.innerWidth * 0.1);
     CSS_HEIGHT = window.innerHeight - 4;
 
 
@@ -97,11 +84,6 @@ canvas.addEventListener("mousemove", function(event) {
 
     mouse.x = (event.x - canvasPosition.left)/WIDTH_SIZE_CHANGE;
     mouse.y = (event.y - canvasPosition.top)/HEIGHT_SIZE_CHANGE;
-
-    // bug smaller screen zoom messes canvas x y up
-    // mouse.x -= 900/2;
-    // mouse.y -= 800/2;
-    // 350, 300
 })
 
 canvas.addEventListener("mouseleave", function() {
@@ -514,43 +496,44 @@ function handleResources() {
 
 
 // floating messages 
-const floatingMessages = [];
-class floatingMessage {
-    constructor(message, x, y, size, color) {
-        this.message = message;
-        this.x = x;
-        this.y = y;
-        this.size = size;
-        this.lifeSpan = 0;
-        this.color = color;
-        this.opacity = 1;
-    }
+// const floatingMessages = [];
+import { floatingMessage, handleFloatingMessages } from './floatingMessage.js';
+// class floatingMessage {
+//     constructor(message, x, y, size, color) {
+//         this.message = message;
+//         this.x = x;
+//         this.y = y;
+//         this.size = size;
+//         this.lifeSpan = 0;
+//         this.color = color;
+//         this.opacity = 1;
+//     }
 
-    update() {
-        this.y -= 0.3;
-        this.lifeSpan += 1;
-        if (this.opacity > 0.03) this.opacity -= 0.03;
-    }
+//     update() {
+//         this.y -= 0.3;
+//         this.lifeSpan += 1;
+//         if (this.opacity > 0.03) this.opacity -= 0.03;
+//     }
 
-    draw() {
-        ctx.globalAlpha = this.opacity;
-        ctx.fillStyle = this.color;
-        ctx.font = this.size + "px Arial";
-        ctx.fillText(this.message, this.x, this.y);
-        ctx.globalAlpha = 1;
-    }
-} 
+//     draw() {
+//         ctx.globalAlpha = this.opacity;
+//         ctx.fillStyle = this.color;
+//         ctx.font = this.size + "px Arial";
+//         ctx.fillText(this.message, this.x, this.y);
+//         ctx.globalAlpha = 1;
+//     }
+// } 
 
-function handleFloatingMessages() {
-    for (let i = 0; i < floatingMessages.length; i++) {
-        floatingMessages[i].update();
-        floatingMessages[i].draw();
-        if (floatingMessages[i].lifeSpan >= 50) {
-            floatingMessages.splice(i, 1);
-            i--;
-        }
-    }
-}
+// function handleFloatingMessages() {
+//     for (let i = 0; i < floatingMessages.length; i++) {
+//         floatingMessages[i].update();
+//         floatingMessages[i].draw();
+//         if (floatingMessages[i].lifeSpan >= 50) {
+//             floatingMessages.splice(i, 1);
+//             i--;
+//         }
+//     }
+// }
 
 
 
@@ -661,3 +644,13 @@ canvas.addEventListener("click", function() {
             20, "blue"))
     }
 })
+
+
+
+
+
+
+
+
+import { test } from './testing.js';
+test();
