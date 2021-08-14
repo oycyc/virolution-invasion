@@ -1,35 +1,5 @@
-// const canvas = document.getElementById("canvas");
-// export const constants.ctx = canvas.getContext("2d");
-// constants.ctx.mozImageSmoothingEnabled = false;
-// constants.ctx.msImageSmoothingEnabled = false;
-// constants.ctx.imageSmoothingEnabled = false;
-// canvas.width = 900;
-// canvas.height = 600;
+import {constants} from './constants.js';
 
-// // global variables
-// const constants.cellSize = 100;
-// const cellGap = 3;
-// const gameGrid = [];
-// const defenders = [];
-// const enemies = [];
-// const enemyPositions = [];
-// let enemiesInterval = 600;
-// let numberOfResources = 300;
-// let score = 0;
-// let frame = 0;
-// let gameOver = false;
-// const projectiles = [];
-
-// // mouse 
-// export const mouse = {
-//     x: 0,
-//     y: 0,
-//     width: 0.1,
-//     height: 0.1,
-//     clicked: false
-// }
-
-import constants from './constants.js';
 console.log(constants.test)
 constants.test += 1;
 console.log(constants.test);
@@ -53,7 +23,7 @@ canvas.addEventListener("mouseup", function() {
 
 let canvasPosition = canvas.getBoundingClientRect();
 console.log(canvasPosition);
-// canvas.addEventListener("mousemove", function(event) {
+// canvas.addEventListener("mousemove"  , function(event) {
 //     mouse.x = event.x - canvasPosition.left;
 //     mouse.y = event.y - canvasPosition.top;
 
@@ -105,43 +75,17 @@ canvas.addEventListener("mouseleave", function() {
 })
 
 // game board
-const controlsBar = {
+export const controlsBar = {
     width: canvas.width,
+    // height: 100,
     height: constants.cellSize,
 }
 
-class Cell {
-    constructor(x, y,) {
-        this.x = x;
-        this.y = y;
-        this.width = constants.cellSize;
-        this.height = constants.cellSize;
-    }
+import { createGrid, handleGameGrid } from './GameBoard.js';
 
-    draw() {
-        // make sure mouse has a position and it's colliding
-        if (constants.mouse.x && constants.mouse.y && collision(this, constants.mouse)) {
-            constants.ctx.strokeStyle = "black";
-            constants.ctx.strokeRect(this.x, this.y, this.width, this.height);
-            constants.ctx.fillText(`${this.x} ${this.y}`, this.x, this.y)
-        }
-    }
-}
-
-function createGrid() {
-    for (let y = constants.cellSize; y < canvas.height; y += constants.cellSize) {
-        for (let x = 0; x < canvas.width; x += constants.cellSize) {
-            constants.gameGrid.push(new Cell(x, y));
-        }
-    }
-}
 createGrid();
 
-function handleGameGrid() {
-    for (let i = 0; i < constants.gameGrid.length; i++) {
-        constants.gameGrid[i].draw();
-    }
-}
+
 
 // DEFENDERS
 const defender1 = new Image();
@@ -515,6 +459,7 @@ function handleResources() {
 // floating messages 
 // const floatingMessages = [];
 import { floatingMessage, handleFloatingMessages } from './floatingMessage.js';
+
 // class floatingMessage {
 //     constructor(message, x, y, size, color) {
 //         this.message = message;
@@ -619,7 +564,7 @@ function random_rgba() {
     return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
 }
 
-function collision(first, second) {
+export function collision(first, second) {
     if ( !(
         first.x > second.x + second.width ||
         first.x + first.width < second.x ||

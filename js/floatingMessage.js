@@ -1,4 +1,4 @@
-import constants from './constants.js';
+import {constants} from './constants.js';
 
 export class floatingMessage {
     constructor(message, x, y, size, color) {
