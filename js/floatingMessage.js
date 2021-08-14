@@ -1,4 +1,4 @@
-
+import constants from './constants.js';
 
 export class floatingMessage {
     constructor(message, x, y, size, color) {
@@ -18,20 +18,20 @@ export class floatingMessage {
     }
 
     draw() {
-        ctx.globalAlpha = this.opacity;
-        ctx.fillStyle = this.color;
-        ctx.font = this.size + "px Arial";
-        ctx.fillText(this.message, this.x, this.y);
-        ctx.globalAlpha = 1;
+        constants.ctx.globalAlpha = this.opacity;
+        constants.ctx.fillStyle = this.color;
+        constants.ctx.font = this.size + "px Arial";
+        constants.ctx.fillText(this.message, this.x, this.y);
+        constants.ctx.globalAlpha = 1;
     }
 } 
 
 export function handleFloatingMessages() {
-    for (let i = 0; i < floatingMessages.length; i++) {
-        floatingMessages[i].update();
-        floatingMessages[i].draw();
-        if (floatingMessages[i].lifeSpan >= 50) {
-            floatingMessages.splice(i, 1);
+    for (let i = 0; i < constants.floatingMessages.length; i++) {
+        constants.floatingMessages[i].update();
+        constants.floatingMessages[i].draw();
+        if (constants.floatingMessages[i].lifeSpan >= 50) {
+            constants.floatingMessages.splice(i, 1);
             i--;
         }
     }
