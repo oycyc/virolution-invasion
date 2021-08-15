@@ -21,6 +21,8 @@ export const constants = {
         clicked: false
     },
     floatingMessages: [],
+    winningScore: 50,
+    resources: [],
 
 
     test: 1

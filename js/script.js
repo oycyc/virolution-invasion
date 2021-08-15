@@ -182,7 +182,7 @@ function handleEnemies() {
         }
     }
 
-    if (constants.frame % constants.enemiesInterval === 0 && constants.score < winningScore) {
+    if (constants.frame % constants.enemiesInterval === 0 && constants.score < constants.winningScore) {
         let verticalPosition = Math.floor(Math.random() * 5 + 1) * constants.cellSize + constants.cellGap;
         constants.enemies.push(new Enemy(verticalPosition));
         constants.enemyPositions.push(verticalPosition);
@@ -207,50 +207,7 @@ import { handleProjectiles } from './projectiles.js';
 
 
 // resources
-const amounts = [20, 30, 40];
-class Resource {
-    constructor() {
-        this.x = Math.random() * (canvas.width - constants.cellSize);
-        this.y = (Math.floor(Math.random() * 5) + 1) * constants.cellSize + 25;
-        this.width = constants.cellSize * 0.6;
-        this.height = constants.cellSize * 0.6;
-        this.amount = amounts[Math.floor(Math.random() * amounts.length)];
-
-    }
-
-    draw() {
-        constants.ctx.fillStyle = "yellow";
-        constants.ctx.fillRect(this.x, this.y, this.width, this.height);
-        constants.ctx.fillStyle = "black";
-        constants.ctx.font = "20px Arial";
-        constants.ctx.fillText(this.amount, this.x + 15, this.y + 25);
-    }
-}
-const winningScore = 50;
-const resources = [];
-function handleResources() {
-    if (constants.frame % 500 === 0 && constants.score < winningScore) {
-        resources.push(new Resource());
-    }
-
-    for (let i = 0; i < resources.length; i++) {
-        resources[i].draw();
-        if (resources[i] && constants.mouse.x && constants.mouse.y && collision(resources[i], constants.mouse)) {
-            constants.numberOfResources += resources[i].amount;
-            constants.floatingMessages.push(new floatingMessage("+" + resources[i].amount,
-            resources[i].x,
-            resources[i].y,
-            30, "black"));
-            constants.floatingMessages.push(new floatingMessage("+" + resources[i].amount,
-                250,
-                50,
-                30, "gold"));
-            // remove after splice
-            resources.splice(i, 1);
-            i--;
-        }
-    }
-}
+import { handleResources } from './resources.js';
 
 
 
@@ -262,42 +219,6 @@ function handleResources() {
 // const floatingMessages = [];
 import { floatingMessage, handleFloatingMessages } from './floatingMessage.js';
 
-// class floatingMessage {
-//     constructor(message, x, y, size, color) {
-//         this.message = message;
-//         this.x = x;
-//         this.y = y;
-//         this.size = size;
-//         this.lifeSpan = 0;
-//         this.color = color;
-//         this.opacity = 1;
-//     }
-
-//     update() {
-//         this.y -= 0.3;
-//         this.lifeSpan += 1;
-//         if (this.opacity > 0.03) this.opacity -= 0.03;
-//     }
-
-//     draw() {
-//         constants.ctx.globalAlpha = this.opacity;
-//         constants.ctx.fillStyle = this.color;
-//         constants.ctx.font = this.size + "px Arial";
-//         constants.ctx.fillText(this.message, this.x, this.y);
-//         constants.ctx.globalAlpha = 1;
-//     }
-// } 
-
-// function handleFloatingMessages() {
-//     for (let i = 0; i < floatingMessages.length; i++) {
-//         floatingMessages[i].update();
-//         floatingMessages[i].draw();
-//         if (floatingMessages[i].lifeSpan >= 50) {
-//             floatingMessages.splice(i, 1);
-//             i--;
-//         }
-//     }
-// }
 
 
 
@@ -318,7 +239,7 @@ function handleGameStatus() {
         constants.ctx.fillText("GAME OVER", 135, 330);
     }
     
-    if (constants.score >= winningScore && constants.enemies.length === 0) {
+    if (constants.score >= constants.winningScore && constants.enemies.length === 0) {
         constants.ctx.fillStyle = "black";
         constants.ctx.font = "60px Arial";
         constants.ctx.fillText("Level Complete", 130, 300);
