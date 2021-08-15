@@ -1,5 +1,5 @@
-import {constants} from './constants.js';
-import {collision} from './script.js';
+import { constants } from './constants.js';
+import { collision } from './collision.js';
 
 class Cell {
     constructor(x, y,) {

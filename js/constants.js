@@ -28,5 +28,9 @@ export const constants = {
 
 // object of file paths
 export const files = {
-
+    defender1: new Image(),
+    defender2: new Image(),
 }
+
+files.defender1.src = "./assets/sprites/plant.png";
+files.defender2.src = "./assets/sprites/red.png";
