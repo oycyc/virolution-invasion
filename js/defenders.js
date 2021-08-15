@@ -1,9 +1,9 @@
 import { constants, files } from './constants.js';
 import { collision } from './collision.js';
 import { Projectile } from './projectiles.js';
+import { floatingMessage } from './floatingMessage.js';
 
-
-export class Defender {
+class Defender {
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -160,4 +160,31 @@ export function chooseDefender() {
     constants.ctx.strokeRect(card2.x, card2.y, card2.width, card2.height);
     constants.ctx.drawImage(files.defender2, 0, 0, 167, 243, 80, 5, 167/3, 243/3)
 }
+
+// place defenders
+constants.canvas.addEventListener("click", function() {
+    // find out how this works..
+    const gridPositionX = constants.mouse.x - (constants.mouse.x % constants.cellSize) + constants.cellGap;
+    const gridPositionY = constants.mouse.y - (constants.mouse.y % constants.cellSize) + constants.cellGap;
+    // end if clicked on top toolbar display
+    if (gridPositionY < constants.cellSize) return;
+    // end if defender already exist in same position
+    for (const defender of constants.defenders) {
+        if (defender.x === gridPositionX && defender.y === gridPositionY) {
+            return;
+        }
+    }
+
+    let defenderCost = 100;
+    if (constants.numberOfResources >= defenderCost) {
+        constants.defenders.push(new Defender(gridPositionX, gridPositionY));
+        constants.numberOfResources -= defenderCost;
+        console.log("it works");
+    } else {
+        constants.floatingMessages.push(new floatingMessage("Need more resources!",
+            constants.mouse.x,
+            constants.mouse.y,
+            20, "blue"))
+    }
+})
 

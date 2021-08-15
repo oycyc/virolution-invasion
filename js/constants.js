@@ -8,7 +8,7 @@ export const constants = {
     enemies: [],
     enemyPositions: [],
     enemiesInterval: 600,
-    numberOfResources: 300,
+    numberOfResources: 5000,
     score: 0,
     frame: 0,
     gameOver: false,
@@ -21,8 +21,13 @@ export const constants = {
         clicked: false
     },
     floatingMessages: [],
-    winningScore: 50,
+    winningScore: 500000,
     resources: [],
+
+    logicDimensions: {
+        width: 900,
+        height: 600
+    },
 
 
     test: 1
@@ -32,7 +37,11 @@ export const constants = {
 export const files = {
     defender1: new Image(),
     defender2: new Image(),
+    enemy1: new Image(),
+    enemy2: new Image(),
 }
 
 files.defender1.src = "./assets/sprites/plant.png";
 files.defender2.src = "./assets/sprites/red.png";
+files.enemy1.src = "./assets/sprites/dino.png";
+files.enemy2.src = "./assets/sprites/dino2.png";
