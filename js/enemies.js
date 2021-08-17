@@ -6,7 +6,7 @@ const enemyTypes = [files.enemy1, files.enemy2];
 
 class Enemy {
     constructor(verticalPosition) {
-        this.x = canvas.width;
+        this.x = constants.canvas.width;
         this.y = verticalPosition;
         this.width = constants.cellSize - constants.cellGap * 2;
         this.height = constants.cellSize - constants.cellGap * 2;
@@ -55,10 +55,11 @@ export function handleEnemies() {
     for (let i = 0; i < constants.enemies.length; i++) {
         constants.enemies[i].update();
         constants.enemies[i].draw();
+        // when it reaches end of the board
         if (constants.enemies[i].x < 0) {
-            // gameOver = true;
+            constants.gameOver = true;
             // temp to figure out resizing
-            continue;
+            // continue;
         }
 
         if (constants.enemies[i].health <= 0) {

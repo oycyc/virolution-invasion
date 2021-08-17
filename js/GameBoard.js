@@ -1,5 +1,5 @@
 import { constants } from './constants.js';
-import { collision } from './collision.js';
+import { collision } from './utils.js';
 
 class Cell {
     constructor(x, y,) {
@@ -20,8 +20,8 @@ class Cell {
 }
 
 export function createGrid() {
-    for (let y = constants.cellSize; y < canvas.height; y += constants.cellSize) {
-        for (let x = 0; x < canvas.width; x += constants.cellSize) {
+    for (let y = constants.cellSize; y < constants.canvas.height; y += constants.cellSize) {
+        for (let x = 0; x < constants.canvas.width; x += constants.cellSize) {
             constants.gameGrid.push(new Cell(x, y));
         }
     }

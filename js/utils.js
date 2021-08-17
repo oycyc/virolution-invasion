@@ -7,7 +7,7 @@ const controlsBar = {
 }
 
 export const handleControlsBar = () => {
-    constants.ctx.clearRect(0, 0, canvas.width, canvas.height);
+    constants.ctx.clearRect(0, 0, constants.canvas.width, constants.canvas.height);
     // constants.ctx.fillStyle = "blue";
     constants.ctx.fillStyle = randomColor;
     constants.ctx.fillRect(0, 0, controlsBar.width, controlsBar.height);
@@ -34,5 +34,16 @@ export const handleGameStatus = () => {
         constants.ctx.fillText("Level Complete", 130, 300);
         constants.ctx.font = "30px Arial";
         constants.ctx.fillText("Yay", 134, 340);
+    }
+}
+
+export function collision(first, second) {
+    if ( !(
+        first.x > second.x + second.width ||
+        first.x + first.width < second.x ||
+        first.y > second.y + second.height ||
+        first.y + first.height < second.y)
+    ) {
+        return true;
     }
 }

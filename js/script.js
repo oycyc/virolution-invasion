@@ -21,24 +21,7 @@ constants.ctx.mozImageSmoothingEnabled = false;
 constants.ctx.msImageSmoothingEnabled = false;
 constants.ctx.imageSmoothingEnabled = false;
 
-
-
-startEventListeners();
-createGrid();
-
-
-
-
-
-
-
-
-
-
-
-
-
-function animate() {
+const animate = () => {
     handleControlsBar();
     handleGameGrid();
     handleResources();
@@ -49,9 +32,12 @@ function animate() {
     handleGameStatus();
     handleFloatingMessages();
     constants.frame++;
-    // console.log(frame);
+    // requestAnimationFrame() are paused when frame is hidden/running background tabs
     if (!constants.gameOver) requestAnimationFrame(animate);
 }
+
+startEventListeners();
+createGrid();
 animate();
 
 

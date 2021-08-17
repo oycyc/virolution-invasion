@@ -1,5 +1,5 @@
 import { constants } from './constants.js';
-import { collision } from './collision.js';
+import { collision } from './utils.js';
 
 export class Projectile {
     constructor(x, y) {

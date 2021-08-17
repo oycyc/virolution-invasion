@@ -6,7 +6,7 @@ let viewWidth;
 let viewHeight;
 
 const resizeCanvas = () => {
-    canvasPosition = canvas.getBoundingClientRect();
+    canvasPosition = constants.canvas.getBoundingClientRect();
     // add some logic where if it's full screen then just normal window.innerWidth - 4
     // but if it's a smaller screen add more percentage to the 0.1
     // then assign the extra space to the divs?
@@ -21,12 +21,12 @@ const resizeCanvas = () => {
         viewHeight = viewWidth / aspectRatio;
     }
 
-    canvas.style.width = viewWidth + "px";
-    canvas.style.height = viewHeight + "px";
+    constants.canvas.style.width = viewWidth + "px";
+    constants.canvas.style.height = viewHeight + "px";
 }
 
 const updateMousePosition = event => {
-    canvasPosition = canvas.getBoundingClientRect();
+    canvasPosition = constants.canvas.getBoundingClientRect();
     let WIDTH_SIZE_CHANGE = viewWidth / constants.logicDimensions.width;
     let HEIGHT_SIZE_CHANGE = viewHeight / constants.logicDimensions.height;
 

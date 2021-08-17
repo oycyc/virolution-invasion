@@ -1,11 +1,11 @@
 import { constants } from './constants.js';
 import { floatingMessage } from './floatingMessage.js';
-import { collision } from './collision.js';
+import { collision } from './utils.js';
 
 const amounts = [20, 30, 40];
 class Resource {
     constructor() {
-        this.x = Math.random() * (canvas.width - constants.cellSize);
+        this.x = Math.random() * (constants.canvas.width - constants.cellSize);
         this.y = (Math.floor(Math.random() * 5) + 1) * constants.cellSize + 25;
         this.width = constants.cellSize * 0.6;
         this.height = constants.cellSize * 0.6;

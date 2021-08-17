@@ -1,5 +1,5 @@
 import { constants, files } from './constants.js';
-import { collision } from './collision.js';
+import { collision } from './utils.js';
 import { Projectile } from './projectiles.js';
 import { floatingMessage } from './floatingMessage.js';
 
