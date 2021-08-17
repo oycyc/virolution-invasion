@@ -10,6 +10,8 @@ const resizeCanvas = () => {
     // add some logic where if it's full screen then just normal window.innerWidth - 4
     // but if it's a smaller screen add more percentage to the 0.1
     // then assign the extra space to the divs?
+    // changing it to like 0.2, 0.3, fixes resizing smaller and needs to touch to fix
+    // great description but i'm sure i'll understand when i test it lool
     viewWidth = window.innerWidth - (window.innerWidth * 0.1);
     viewHeight = window.innerHeight - 4;
 

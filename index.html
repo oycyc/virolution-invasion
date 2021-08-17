@@ -10,10 +10,29 @@
     </head>
     <body>
         <div id="main">
-            <div>asd,</div>
+            <!-- Virus Fighter Selection -->
+            <div id="defender-selection">
+                <div>
+                    <img style="border: 0.0001px solid #ffffff45;"
+                    width="100px" src="./assets/defender-selection/earth_mask.png" alt="Earth Mask Fighter">
+                </div>
+            </div>
+
+            <!-- Game Canvas -->
             <canvas id="canvas"></canvas>
-            <div id="bbb">asd,</div>
+
+            <!-- Right Column -->
+            <div id="defender-selection" style="justify-self: start;">
+                <div>
+                    <img width="100px" src="./assets/defender-selection/earth_mask.png" alt="Earth Mask Fighter">
+                </div>
+            </div>
         </div>
+
+        <!-- both right and left columns has to be the same width 
+        for canvas to be centered, fix or just make both even to look better? -->
+
+
         <!-- add loading spinner then await? -->
         <script src="./js/script.js" type="module" async defer></script>
     </body>

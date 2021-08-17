@@ -21,6 +21,7 @@ class Cell {
 
 export function createGrid() {
     for (let y = constants.cellSize; y < constants.canvas.height; y += constants.cellSize) {
+    // for (let y = 0; y < constants.canvas.height; y += constants.cellSize) {
         for (let x = 0; x < constants.canvas.width; x += constants.cellSize) {
             constants.gameGrid.push(new Cell(x, y));
         }
