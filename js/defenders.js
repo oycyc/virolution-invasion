@@ -31,7 +31,7 @@ class Defender {
         constants.ctx.fillText(Math.floor(this.health), this.x + 15, this.y + 5);
 
 
-        if (this.chosenDefender === 1) {
+        if (this.chosenDefender === 0) {
             // constants.ctx.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh);
             constants.ctx.drawImage(files.defender1,
                 this.frameX * this.spriteWidth,
@@ -41,7 +41,7 @@ class Defender {
                 this.x,
                 this.y,
                 this.width, this.height);
-        } else if (this.chosenDefender === 2) {
+        } else if (this.chosenDefender === 1) {
             constants.ctx.drawImage(files.defender2,
                 this.frameX * this.spriteWidth,
                 0,
@@ -124,6 +124,17 @@ const card2 = {
 
 let chosenDefender = 1;
 
+const fighters = [
+    document.getElementById("mask-fighter"),
+    document.getElementById("vaccine-fighter")
+];
+
+fighters.forEach((fighter, index) =>{
+    fighter.addEventListener("click", () => {
+        console.log(index)
+        chosenDefender = index;
+    })
+})
 
 export function chooseDefender() {
     // put these in the card object
@@ -132,6 +143,7 @@ export function chooseDefender() {
 
     if (collision(constants.mouse, card1) && constants.mouse.clicked) {
         chosenDefender = 1;
+        
     } else if (collision(constants.mouse, card2) && constants.mouse.clicked) {
         chosenDefender = 2;
     }

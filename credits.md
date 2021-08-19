@@ -1,1 +1,2 @@
 - Earth Wearing Mask: Vecteezy https://www.vecteezy.com/free-vector/earth-mask
+- Vaccine Fighter: Vecteezy https://www.vecteezy.com/vector-art/2026949-cute-vaccine-characters-fight-against-viruses
