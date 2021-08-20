@@ -26,7 +26,7 @@ img {
     grid-template-columns: 1fr auto 1fr;
 }
 
-#defender-selection {
+#champion-selection {
     padding: 1em;
     justify-self: end;
     /* prevent images from being dragged & ghost images*/
@@ -37,12 +37,12 @@ img {
     user-select: none;
 }
 
-.defender-card {
+.champion-card {
     padding: 10px 0;    
 
 }
 
-.defender-image {
+.champion-image {
     border: 0.0001px solid #ffffff45;
     /* temp value media query later */
     width: 100px;
