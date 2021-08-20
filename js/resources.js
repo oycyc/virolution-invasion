@@ -27,7 +27,7 @@ class Resource {
         constants.ctx.fillRect(this.x, this.currentY, this.width, this.height);
         constants.ctx.fillStyle = "black";
         constants.ctx.font = "20px Arial";
-        constants.ctx.fillText(this.amount, this.x + 15, this.y + 25);
+        constants.ctx.fillText(this.amount, this.x + 15, this.currentY + 25);
     }
 }
 

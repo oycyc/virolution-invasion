@@ -23,7 +23,8 @@ img {
     height: 100%;
     align-items: center;
     color: white;
-    grid-template-columns: 1fr auto 1fr;
+    /* grid-template-columns: 1fr auto 1fr; */
+    grid-template-columns: auto auto auto;
 }
 
 #champion-selection {
