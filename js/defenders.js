@@ -105,24 +105,8 @@ export function handleDefenders() {
 
 
 
-// organize this...
-
-const card1 = {
-    x: 10,
-    y: 10,
-    width: 70,
-    height: 85
-}
-
-
-const card2 = {
-    x: 90,
-    y: 10,
-    width: 70,
-    height: 85
-}
-
-let chosenDefender = 1;
+// choose the fighter
+let chosenDefender = -1;
 
 const fighters = [
     document.getElementById("mask-fighter"),
@@ -131,49 +115,27 @@ const fighters = [
 
 fighters.forEach((fighter, index) => {
     fighter.addEventListener("click", () => {
-        console.log(index)
-        fighters[index].classList.add("testing-border")
+        // when selected same champion twice, remove the selection
+        if (fighter.classList.contains("active-selection")) {
+            fighter.classList.remove("active-selection");
+            chosenDefender = -1;
+            return;
+        }
+
+        removeActiveBorders();
+        fighter.classList.add("active-selection")
         chosenDefender = index;
+    
+        
     })
 })
 
-// constantly recalled in every animation frame, better to not use..
-// export function chooseDefender() {
-//     // put these in the card object
-//     let card1stroke = "black";
-//     let card2stroke = "black";
+const removeActiveBorders = () => {
+    fighters.forEach(fighter => {
+        fighter.classList.remove("active-selection");
+    })
+}
 
-//     if (collision(constants.mouse, card1) && constants.mouse.clicked) {
-//         chosenDefender = 1;
-        
-//     } else if (collision(constants.mouse, card2) && constants.mouse.clicked) {
-//         chosenDefender = 2;
-//     }
-
-//     if (chosenDefender === 1) {
-//         card1stroke = "gold";
-//         card2stroke = "black"
-//     } else if (chosenDefender === 2) {
-//         card1stroke = "black";
-//         card2stroke = "gold";
-//     } else {
-//         card1stroke = "black";
-//         card2stroke = "black";
-//     }
-
-//     constants.ctx.lineWidth = 1;
-//     constants.ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
-//     constants.ctx.fillRect(card1.x, card1.y, card1.width, card1.height);
-//     constants.ctx.strokeStyle = card1stroke;
-//     constants.ctx.strokeRect(card1.x, card1.y, card1.width, card1.height);
-//     constants.ctx.drawImage(files.defender1, 0, 0, 167, 243, 0, 5, 167/3, 243/3)
-
-
-//     constants.ctx.fillRect(card2.x, card2.y, card2.width, card2.height);
-//     constants.ctx.strokeStyle = card2stroke;
-//     constants.ctx.strokeRect(card2.x, card2.y, card2.width, card2.height);
-//     constants.ctx.drawImage(files.defender2, 0, 0, 167, 243, 80, 5, 167/3, 243/3)
-// }
 
 // place defenders
 constants.canvas.addEventListener("click", function() {
@@ -190,12 +152,12 @@ constants.canvas.addEventListener("click", function() {
     }
 
     let defenderCost = 100;
-    if (constants.numberOfResources >= defenderCost) {
+    if (constants.numberOfResources >= defenderCost && chosenDefender >= 0) {
         constants.defenders.push(new Defender(gridPositionX, gridPositionY));
         constants.numberOfResources -= defenderCost;
         console.log("it works");
     } else {
-        constants.floatingMessages.push(new floatingMessage("Need more resources!",
+        constants.floatingMessages.push(new floatingMessage("Need more resources! OR FIGHTER NOT SELECTED",
             constants.mouse.x,
             constants.mouse.y,
             20, "blue"))
