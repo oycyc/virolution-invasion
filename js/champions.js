@@ -3,7 +3,7 @@ import { collision } from './utils.js';
 import { Projectile } from './projectiles.js';
 import { floatingMessage } from './floatingMessage.js';
 
-class Defender {
+class Champion {
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -19,7 +19,7 @@ class Defender {
         this.spriteHeight = 243;
         this.minFrame = 0;
         this.maxFrame = 1;
-        this.chosenDefender = chosenDefender;
+        this.chosenChampion = chosenChampion;
 
     }
 
@@ -31,9 +31,9 @@ class Defender {
         constants.ctx.fillText(Math.floor(this.health), this.x + 15, this.y + 5);
 
 
-        if (this.chosenDefender === 0) {
+        if (this.chosenChampion === 0) {
             // constants.ctx.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh);
-            constants.ctx.drawImage(files.defender1,
+            constants.ctx.drawImage(files.champion1,
                 this.frameX * this.spriteWidth,
                 0,
                 this.spriteWidth,
@@ -41,8 +41,8 @@ class Defender {
                 this.x,
                 this.y,
                 this.width, this.height);
-        } else if (this.chosenDefender === 1) {
-            constants.ctx.drawImage(files.defender2,
+        } else if (this.chosenChampion === 1) {
+            constants.ctx.drawImage(files.champion2,
                 this.frameX * this.spriteWidth,
                 0,
                 this.spriteWidth,
@@ -62,7 +62,7 @@ class Defender {
         }
 
         
-        // if defender sprite sheet has different frames, use if elif to adjust
+        // if champion sprite sheet has different frames, use if elif to adjust
         if (this.shooting) {
             this.minFrame = 0;
             this.maxFrame = 1;
@@ -78,24 +78,24 @@ class Defender {
     }
 }
 
-export function handleDefenders() {
-    for (let i = 0; i < constants.defenders.length; i++) {
-        constants.defenders[i].draw();
-        constants.defenders[i].update();
-        if (constants.enemyPositions.indexOf(constants.defenders[i].y) !== -1) {
-            constants.defenders[i].shooting = true;
+export function handleChampions() {
+    for (let i = 0; i < constants.champions.length; i++) {
+        constants.champions[i].draw();
+        constants.champions[i].update();
+        if (constants.enemyPositions.indexOf(constants.champions[i].y) !== -1) {
+            constants.champions[i].shooting = true;
         } else {
-            constants.defenders[i].shooting = false;
+            constants.champions[i].shooting = false;
         }
 
         for (let j = 0; j < constants.enemies.length; j++) {
-            if (constants.defenders[i] && collision(constants.defenders[i], constants.enemies[j])) {
+            if (constants.champions[i] && collision(constants.champions[i], constants.enemies[j])) {
                 constants.enemies[j].movement = 0;
-                constants.defenders[i].health -= 0.2;
+                constants.champions[i].health -= 0.2;
             }
 
-            if (constants.defenders[i] && constants.defenders[i].health <= 0) {
-                constants.defenders.splice(i, 1);
+            if (constants.champions[i] && constants.champions[i].health <= 0) {
+                constants.champions.splice(i, 1);
                 i--;
                 constants.enemies[j].movement = constants.enemies[j].speed;
             }
@@ -106,7 +106,7 @@ export function handleDefenders() {
 
 
 // choose the fighter
-let chosenDefender = -1;
+let chosenChampion = -1;
 
 const fighters = [
     document.getElementById("mask-fighter"),
@@ -118,13 +118,13 @@ fighters.forEach((fighter, index) => {
         // when selected same champion twice, remove the selection
         if (fighter.classList.contains("active-selection")) {
             fighter.classList.remove("active-selection");
-            chosenDefender = -1;
+            chosenChampion = -1;
             return;
         }
 
         removeActiveBorders();
         fighter.classList.add("active-selection")
-        chosenDefender = index;
+        chosenChampion = index;
     
         
     })
@@ -137,24 +137,24 @@ const removeActiveBorders = () => {
 }
 
 
-// place defenders
+// place the units
 constants.canvas.addEventListener("click", function() {
     // find out how this works..
     const gridPositionX = constants.mouse.x - (constants.mouse.x % constants.cellSize) + constants.cellGap;
     const gridPositionY = constants.mouse.y - (constants.mouse.y % constants.cellSize) + constants.cellGap;
     // end if clicked on top toolbar display
     if (gridPositionY < constants.cellSize) return;
-    // end if defender already exist in same position
-    for (const defender of constants.defenders) {
-        if (defender.x === gridPositionX && defender.y === gridPositionY) {
+    // end if champion already exist in same position
+    for (const champion of constants.champions) {
+        if (champion.x === gridPositionX && champion.y === gridPositionY) {
             return;
         }
     }
 
-    let defenderCost = 100;
-    if (constants.numberOfResources >= defenderCost && chosenDefender >= 0) {
-        constants.defenders.push(new Defender(gridPositionX, gridPositionY));
-        constants.numberOfResources -= defenderCost;
+    let championCost = 100;
+    if (constants.numberOfResources >= championCost && chosenChampion >= 0) {
+        constants.champions.push(new Champion(gridPositionX, gridPositionY));
+        constants.numberOfResources -= championCost;
         console.log("it works");
     } else {
         constants.floatingMessages.push(new floatingMessage("Need more resources! OR FIGHTER NOT SELECTED",

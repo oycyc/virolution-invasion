@@ -4,7 +4,7 @@ export const constants = {
     cellSize: 100,
     cellGap: 3,
     gameGrid: [],
-    defenders: [],
+    champions: [],
     enemies: [],
     enemyPositions: [],
     enemiesInterval: 600,
@@ -35,13 +35,13 @@ export const constants = {
 
 // object of file paths
 export const files = {
-    defender1: new Image(),
-    defender2: new Image(),
+    champion1: new Image(),
+    champion2: new Image(),
     enemy1: new Image(),
     enemy2: new Image(),
 }
 
-files.defender1.src = "./assets/sprites/plant.png";
-files.defender2.src = "./assets/sprites/red.png";
+files.champion1.src = "./assets/sprites/plant.png";
+files.champion2.src = "./assets/sprites/red.png";
 files.enemy1.src = "./assets/sprites/dino.png";
 files.enemy2.src = "./assets/sprites/dino2.png";
