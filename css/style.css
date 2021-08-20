@@ -49,6 +49,10 @@ img {
     height: 100px;
 }
 
+.testing-border {
+    border: 5px solid red;
+}
+
 #canvas {
     /* position: absolute;
     top: 50%;

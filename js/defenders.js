@@ -129,49 +129,51 @@ const fighters = [
     document.getElementById("vaccine-fighter")
 ];
 
-fighters.forEach((fighter, index) =>{
+fighters.forEach((fighter, index) => {
     fighter.addEventListener("click", () => {
         console.log(index)
+        fighters[index].classList.add("testing-border")
         chosenDefender = index;
     })
 })
 
-export function chooseDefender() {
-    // put these in the card object
-    let card1stroke = "black";
-    let card2stroke = "black";
+// constantly recalled in every animation frame, better to not use..
+// export function chooseDefender() {
+//     // put these in the card object
+//     let card1stroke = "black";
+//     let card2stroke = "black";
 
-    if (collision(constants.mouse, card1) && constants.mouse.clicked) {
-        chosenDefender = 1;
+//     if (collision(constants.mouse, card1) && constants.mouse.clicked) {
+//         chosenDefender = 1;
         
-    } else if (collision(constants.mouse, card2) && constants.mouse.clicked) {
-        chosenDefender = 2;
-    }
+//     } else if (collision(constants.mouse, card2) && constants.mouse.clicked) {
+//         chosenDefender = 2;
+//     }
 
-    if (chosenDefender === 1) {
-        card1stroke = "gold";
-        card2stroke = "black"
-    } else if (chosenDefender === 2) {
-        card1stroke = "black";
-        card2stroke = "gold";
-    } else {
-        card1stroke = "black";
-        card2stroke = "black";
-    }
+//     if (chosenDefender === 1) {
+//         card1stroke = "gold";
+//         card2stroke = "black"
+//     } else if (chosenDefender === 2) {
+//         card1stroke = "black";
+//         card2stroke = "gold";
+//     } else {
+//         card1stroke = "black";
+//         card2stroke = "black";
+//     }
 
-    constants.ctx.lineWidth = 1;
-    constants.ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
-    constants.ctx.fillRect(card1.x, card1.y, card1.width, card1.height);
-    constants.ctx.strokeStyle = card1stroke;
-    constants.ctx.strokeRect(card1.x, card1.y, card1.width, card1.height);
-    constants.ctx.drawImage(files.defender1, 0, 0, 167, 243, 0, 5, 167/3, 243/3)
+//     constants.ctx.lineWidth = 1;
+//     constants.ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+//     constants.ctx.fillRect(card1.x, card1.y, card1.width, card1.height);
+//     constants.ctx.strokeStyle = card1stroke;
+//     constants.ctx.strokeRect(card1.x, card1.y, card1.width, card1.height);
+//     constants.ctx.drawImage(files.defender1, 0, 0, 167, 243, 0, 5, 167/3, 243/3)
 
 
-    constants.ctx.fillRect(card2.x, card2.y, card2.width, card2.height);
-    constants.ctx.strokeStyle = card2stroke;
-    constants.ctx.strokeRect(card2.x, card2.y, card2.width, card2.height);
-    constants.ctx.drawImage(files.defender2, 0, 0, 167, 243, 80, 5, 167/3, 243/3)
-}
+//     constants.ctx.fillRect(card2.x, card2.y, card2.width, card2.height);
+//     constants.ctx.strokeStyle = card2stroke;
+//     constants.ctx.strokeRect(card2.x, card2.y, card2.width, card2.height);
+//     constants.ctx.drawImage(files.defender2, 0, 0, 167, 243, 80, 5, 167/3, 243/3)
+// }
 
 // place defenders
 constants.canvas.addEventListener("click", function() {
