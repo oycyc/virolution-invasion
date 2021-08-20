@@ -6,28 +6,28 @@ const amounts = [20, 30, 40];
 class Resource {
     constructor() {
         this.x = Math.random() * (constants.canvas.width - constants.cellSize);
-        // currentY is current position -- y is the final positional
-        this.currentY = 0;
-        this.y = (Math.floor(Math.random() * 5) + 1) * constants.cellSize + 25;
+        // this.y is current position, finalY is final
+        this.y = 0;
+        this.finalY = (Math.floor(Math.random() * 5) + 1) * constants.cellSize + 25;
         this.width = constants.cellSize * 0.6;
         this.height = constants.cellSize * 0.6;
         this.amount = amounts[Math.floor(Math.random() * amounts.length)];
-        this.speed = 5;
+        this.speed = 3;
     }
 
     update() {
-        if (this.currentY < this.y) {
-            this.currentY += this.speed;
+        if (this.y < this.finalY) {
+            this.y += this.speed;
 
         }
     }
 
     draw() {
         constants.ctx.fillStyle = "yellow";
-        constants.ctx.fillRect(this.x, this.currentY, this.width, this.height);
+        constants.ctx.fillRect(this.x, this.y, this.width, this.height);
         constants.ctx.fillStyle = "black";
         constants.ctx.font = "20px Arial";
-        constants.ctx.fillText(this.amount, this.x + 15, this.currentY + 25);
+        constants.ctx.fillText(this.amount, this.x + 15, this.y + 25);
     }
 }
 

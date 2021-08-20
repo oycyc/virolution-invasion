@@ -24,7 +24,7 @@ img {
     align-items: center;
     color: white;
     /* grid-template-columns: 1fr auto 1fr; */
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr auto 1fr;
 }
 
 #champion-selection {
