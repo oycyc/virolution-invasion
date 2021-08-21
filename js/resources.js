@@ -3,6 +3,24 @@ import { floatingMessage } from './floatingMessage.js';
 import { collision } from './utils.js';
 
 const amounts = [20, 30, 40];
+
+// resources to include:
+// vaccine (shot), masks, hand sanitizer, spray, wipes
+const files = [new Image(), new Image()]
+files[0].src = "./assets/resources/mask.png";
+
+
+// constants.ctx.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh);
+// constants.ctx.drawImage(files.champion1,
+//     this.frameX * this.spriteWidth,
+//     0,
+//     this.spriteWidth,
+//     this.spriteHeight,
+//     this.x,
+//     this.y,
+//     this.width, this.height);
+
+
 class Resource {
     constructor() {
         this.x = Math.random() * (constants.canvas.width - constants.cellSize);
@@ -23,8 +41,9 @@ class Resource {
     }
 
     draw() {
-        constants.ctx.fillStyle = "yellow";
-        constants.ctx.fillRect(this.x, this.y, this.width, this.height);
+        // constants.ctx.fillStyle = "yellow";
+        // constants.ctx.fillRect(this.x, this.y, this.width, this.height);
+        constants.ctx.drawImage(files[0], 0, 0, 64, 64, this.x, this.y, this.width, this.height);
         constants.ctx.fillStyle = "black";
         constants.ctx.font = "20px Arial";
         constants.ctx.fillText(this.amount, this.x + 15, this.y + 25);

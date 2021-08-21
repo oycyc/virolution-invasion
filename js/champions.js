@@ -78,7 +78,7 @@ class Champion {
     }
 }
 
-export function handleChampions() {
+export function updateChampionsFrame() {
     for (let i = 0; i < constants.champions.length; i++) {
         constants.champions[i].draw();
         constants.champions[i].update();

@@ -6,5 +6,5 @@
 - change all functions into es6 fxs
 - in defenders.js, change chooseDefender and Defender class to input this.chosenDefender as a parameter instead of using global variable
 
-
+- change every function from "handlexyz" to "updatechampionframe"
 

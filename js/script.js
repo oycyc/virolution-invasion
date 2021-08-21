@@ -4,7 +4,7 @@ import { startEventListeners } from './eventListeners.js';
 import { createGrid, handleGameGrid } from './GameBoard.js';
 
 // place new defender in defender.js ? maybe
-import { handleChampions } from './champions.js';
+import { updateChampionsFrame } from './champions.js';
 import { handleEnemies } from './enemies.js';
 import { handleProjectiles } from './projectiles.js';
 
@@ -25,7 +25,7 @@ const animate = () => {
     handleControlsBar();
     handleGameGrid();
     handleResources();
-    handleChampions();
+    updateChampionsFrame();
     handleEnemies();
     handleProjectiles();
     handleGameStatus();
