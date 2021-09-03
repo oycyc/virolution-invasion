@@ -24,9 +24,9 @@ constants.ctx.imageSmoothingEnabled = false;
 const animate = () => {
     handleControlsBar();
     handleGameGrid();
-    handleResources();
     updateChampionsFrame();
     handleEnemies();
+    handleResources();
     handleProjectiles();
     handleGameStatus();
     handleFloatingMessages();

@@ -1,8 +1,10 @@
-import { constants, files } from './constants.js';
+import { constants } from './constants.js';
 import { floatingMessage } from './floatingMessage.js';
 
 
-const enemyTypes = [files.enemy1, files.enemy2];
+const enemyTypes = [new Image(), new Image()];
+enemyTypes[0].src = "./assets/sprites/dino.png";
+enemyTypes[1].src = "./assets/sprites/dino2.png";
 
 class Enemy {
     constructor(verticalPosition) {

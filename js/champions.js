@@ -1,7 +1,17 @@
-import { constants, files } from './constants.js';
+import { constants } from './constants.js';
 import { collision } from './utils.js';
 import { Projectile } from './projectiles.js';
 import { floatingMessage } from './floatingMessage.js';
+
+const files = {
+    champion1: new Image(),
+    champion2: new Image(),
+}
+
+files.champion1.src = "./assets/sprites/plant.png";
+files.champion1.src = "./assets/test3.png";
+files.champion2.src = "./assets/sprites/red.png";
+
 
 class Champion {
     constructor(x, y) {
@@ -9,16 +19,18 @@ class Champion {
         this.y = y;
         this.width = constants.cellSize - constants.cellGap * 2;
         this.height = constants.cellSize - constants.cellGap * 2;
+        // this.width = 100;
+        // this.height = 100;
         this.shooting = false;
         this.shootNow = false;
         this.health = 100;
         this.timer = 0;
         this.frameX = 0;
         this.frameY = 0;
-        this.spriteWidth = 167;
-        this.spriteHeight = 243;
+        this.spriteWidth = 100;
+        this.spriteHeight = 100;
         this.minFrame = 0;
-        this.maxFrame = 1;
+        this.maxFrame = 5;
         this.chosenChampion = chosenChampion;
 
     }
@@ -55,7 +67,7 @@ class Champion {
     }
 
     update() {
-        if (constants.frame % 50 === 0) {
+        if (constants.frame % 10 === 0) {
             if (this.frameX < this.maxFrame) this.frameX++;
             else this.frameX = this.minFrame;
             if (this.frameX === 1) this.shootNow = true;
@@ -65,7 +77,7 @@ class Champion {
         // if champion sprite sheet has different frames, use if elif to adjust
         if (this.shooting) {
             this.minFrame = 0;
-            this.maxFrame = 1;
+            this.maxFrame = 4;
         } else {
             this.minFrame = 0;
             this.maxFrame = 1;

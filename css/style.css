@@ -3,7 +3,10 @@ html, body {
 }
 
 body {
-    background: black;
+    background-image: url("../assets/waves_repeating_green.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 0;
 }
 

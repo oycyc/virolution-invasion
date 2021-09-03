@@ -2,12 +2,15 @@ import { constants } from './constants.js';
 import { floatingMessage } from './floatingMessage.js';
 import { collision } from './utils.js';
 
-const amounts = [20, 30, 40];
+const amounts = [20, 30, 40, 50];
 
 // resources to include:
 // vaccine (shot), masks, hand sanitizer, spray, wipes
-const files = [new Image(), new Image()]
+const files = []
+files[0] = new Image();
 files[0].src = "./assets/resources/mask.png";
+files[1] = new Image();
+files[1].src = "./assets/resources/syringe.png";
 
 
 // constants.ctx.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh);
@@ -29,8 +32,9 @@ class Resource {
         this.finalY = (Math.floor(Math.random() * 5) + 1) * constants.cellSize + 25;
         this.width = constants.cellSize * 0.6;
         this.height = constants.cellSize * 0.6;
-        this.amount = amounts[Math.floor(Math.random() * amounts.length)];
         this.speed = 3;
+        this.amount = amounts[Math.floor(Math.random() * amounts.length)];
+        this.resourceFile = files[Math.floor(Math.random() * files.length)];
     }
 
     update() {
@@ -41,9 +45,7 @@ class Resource {
     }
 
     draw() {
-        // constants.ctx.fillStyle = "yellow";
-        // constants.ctx.fillRect(this.x, this.y, this.width, this.height);
-        constants.ctx.drawImage(files[0], 0, 0, 64, 64, this.x, this.y, this.width, this.height);
+        constants.ctx.drawImage(this.resourceFile, 0, 0, 64, 64, this.x, this.y, this.width, this.height);
         constants.ctx.fillStyle = "black";
         constants.ctx.font = "20px Arial";
         constants.ctx.fillText(this.amount, this.x + 15, this.y + 25);
