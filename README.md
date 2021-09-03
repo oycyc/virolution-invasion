@@ -9,3 +9,8 @@
 - change every function from "handlexyz" to "updatechampionframe"
 
 - if in idle, slower update frame
+- remove the arms from vaccine head
+
+
+## non essential
+- add hurt animation for champs and enemies

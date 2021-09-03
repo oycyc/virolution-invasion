@@ -10,34 +10,40 @@ const files = {
 
 files.champion1.src = "./assets/sprites/plant.png";
 files.champion1.src = "./assets/test3.png";
-files.champion2.src = "./assets/sprites/red.png";
+files.champion2.src = "./assets/test4.png";
 
 
 class Champion {
     constructor(x, y) {
+        this.chosenChampion = chosenChampion;
         this.x = x;
         this.y = y;
+        // display dimensions 
         this.width = constants.cellSize - constants.cellGap * 2;
         this.height = constants.cellSize - constants.cellGap * 2;
-        // this.width = 150;
-        // this.height = 150;
-        this.shooting = false;
-        this.shootNow = false;
-        this.health = 100;
-        this.timer = 0;
-        this.frameX = 0;
-        this.frameY = 0;
+        // sprite dimensions
         this.spriteWidth = 150;
         this.spriteHeight = 150;
+        // shooting determines the shooting frame, shootNow determines when projectile fires
+        this.shooting = false;
+        this.shootNow = false;
+        // frame of the spritesheet
+        this.frameX = 0;
+        // first frame and last frame
         this.minFrame = 0;
         this.maxFrame = 5;
-        this.chosenChampion = chosenChampion;
+
+
+
+        // make maxFrame and health arguments
+        // timer used for special effects particular to this champion, perhaps ability
+        this.health = 100;
+        this.timer = 0;
+        
 
     }
 
     draw() {
-        // constants.ctx.fillStyle = "blue";
-        // constants.ctx.fillRect(this.x, this.y, this.width, this.height);
         constants.ctx.fillStyle = "black";
         constants.ctx.font = "30px Arial";
         constants.ctx.fillText(Math.floor(this.health), this.x + 15, this.y + 5);
@@ -70,17 +76,18 @@ class Champion {
         if (constants.frame % 25 === 0) {
             if (this.frameX < this.maxFrame) this.frameX++;
             else this.frameX = this.minFrame;
-            if (this.frameX === 1) this.shootNow = true;
+            // last frame where the shot will be fired
+            if (this.frameX === 5) this.shootNow = true;
         }
 
         
         // if champion sprite sheet has different frames, use if elif to adjust
         if (this.shooting) {
-            this.minFrame = 0;
-            this.maxFrame = 3;
-        } else {
-            this.minFrame = 4;
+            this.minFrame = 2;
             this.maxFrame = 5;
+        } else {
+            this.minFrame = 0;
+            this.maxFrame = 1;
         }
 
         if (this.shooting && this.shootNow) {
