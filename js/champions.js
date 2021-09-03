@@ -17,18 +17,18 @@ class Champion {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.width = constants.cellSize - constants.cellGap * 2;
-        this.height = constants.cellSize - constants.cellGap * 2;
-        // this.width = 100;
-        // this.height = 100;
+        // this.width = constants.cellSize - constants.cellGap * 2;
+        // this.height = constants.cellSize - constants.cellGap * 2;
+        this.width = 150;
+        this.height = 150;
         this.shooting = false;
         this.shootNow = false;
         this.health = 100;
         this.timer = 0;
         this.frameX = 0;
         this.frameY = 0;
-        this.spriteWidth = 100;
-        this.spriteHeight = 100;
+        this.spriteWidth = 150;
+        this.spriteHeight = 150;
         this.minFrame = 0;
         this.maxFrame = 5;
         this.chosenChampion = chosenChampion;

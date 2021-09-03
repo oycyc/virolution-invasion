@@ -1,7 +1,7 @@
 export const constants = {
     canvas: document.getElementById("canvas"),
     ctx: canvas.getContext("2d"),
-    cellSize: 100,
+    cellSize: 150,
     cellGap: 3,
     gameGrid: [],
     champions: [],
@@ -25,8 +25,8 @@ export const constants = {
     resources: [],
 
     logicDimensions: {
-        width: 900,
-        height: 600
+        width: 1200,
+        height: 900
     },
 
 
