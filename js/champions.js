@@ -17,10 +17,10 @@ class Champion {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        // this.width = constants.cellSize - constants.cellGap * 2;
-        // this.height = constants.cellSize - constants.cellGap * 2;
-        this.width = 150;
-        this.height = 150;
+        this.width = constants.cellSize - constants.cellGap * 2;
+        this.height = constants.cellSize - constants.cellGap * 2;
+        // this.width = 150;
+        // this.height = 150;
         this.shooting = false;
         this.shootNow = false;
         this.health = 100;
@@ -67,7 +67,7 @@ class Champion {
     }
 
     update() {
-        if (constants.frame % 10 === 0) {
+        if (constants.frame % 25 === 0) {
             if (this.frameX < this.maxFrame) this.frameX++;
             else this.frameX = this.minFrame;
             if (this.frameX === 1) this.shootNow = true;
@@ -77,10 +77,10 @@ class Champion {
         // if champion sprite sheet has different frames, use if elif to adjust
         if (this.shooting) {
             this.minFrame = 0;
-            this.maxFrame = 4;
+            this.maxFrame = 3;
         } else {
-            this.minFrame = 0;
-            this.maxFrame = 1;
+            this.minFrame = 4;
+            this.maxFrame = 5;
         }
 
         if (this.shooting && this.shootNow) {

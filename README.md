@@ -8,3 +8,4 @@
 
 - change every function from "handlexyz" to "updatechampionframe"
 
+- if in idle, slower update frame
