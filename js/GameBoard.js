@@ -1,6 +1,6 @@
 import { constants } from './constants.js';
+import { championConsts } from './constants.js';
 import { collision } from './utils.js';
-
 
 
 class Cell {
@@ -21,17 +21,16 @@ class Cell {
             if (constants.selectedChampionIndex >= 0) {
                 constants.ctx.globalAlpha = 0.4;
                 constants.ctx.drawImage(constants.championFiles[constants.selectedChampionIndex],
-                    0 * 150,
-                    0,
-                    150,
-                    150,
+                    0, // x frame of the sprite
+                    0, // y frame
+                    championConsts.spriteWidth,
+                    championConsts.spriteHeight,
                     this.x,
                     this.y,
-                    constants.cellSize - constants.cellGap * 2, constants.cellSize - constants.cellGap * 2);
+                    championConsts.width, championConsts.height);
                 constants.ctx.globalAlpha = 1;
             }
         }
-        
     }
 }
 

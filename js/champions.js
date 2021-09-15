@@ -1,4 +1,5 @@
 import { constants } from './constants.js';
+import { championConsts } from './constants.js';
 import { collision } from './utils.js';
 import { Projectile } from './projectiles.js';
 import { floatingMessage } from './floatingMessage.js';
@@ -11,12 +12,9 @@ class Champion {
         this.selectedChampionIndex = constants.selectedChampionIndex;
         this.x = x;
         this.y = y;
-        // display dimensions 
-        this.width = constants.cellSize - constants.cellGap * 2;
-        this.height = constants.cellSize - constants.cellGap * 2;
-        // sprite dimensions
-        this.spriteWidth = 150;
-        this.spriteHeight = 150;
+        // display dimensions (grid)
+        this.width = championConsts.width;
+        this.height = championConsts.height;;
         // shooting determines the shooting frame, shootNow determines when projectile fires
         this.shooting = false;
         this.shootNow = false;
@@ -42,13 +40,13 @@ class Champion {
         constants.ctx.fillText(Math.floor(this.health), this.x + 15, this.y + 5);
 
         constants.ctx.drawImage(constants.championFiles[this.selectedChampionIndex],
-            this.frameX * this.spriteWidth,
+            this.frameX * championConsts.spriteWidth,
             0,
-            this.spriteWidth,
-            this.spriteHeight,
+            championConsts.spriteWidth,
+            championConsts.spriteHeight,
             this.x,
             this.y,
-            this.width, this.height);
+            championConsts.width, championConsts.height);
 
     }
 

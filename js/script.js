@@ -36,13 +36,13 @@ const animate = () => {
 }
 
 startEventListeners();
-// createGrid();
-// animate();
+createGrid();
+animate();
 
-setTimeout(() => {
-    createGrid();
-    animate();
-}, 3000)
+// setTimeout(() => {
+//     createGrid();
+//     animate();
+// }, 3000)
 
 
 

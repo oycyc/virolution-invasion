@@ -30,8 +30,17 @@ export const constants = {
         height: 900
     },
 
-    championFiles: [new Image(), new Image()]
+    championFiles: [new Image(), new Image()], 
 
+}
+
+export const championConsts = {
+    // display dimensions (grid)
+    width: constants.cellSize - constants.cellGap * 2,
+    height: constants.cellSize - constants.cellGap * 2,
+    // sprite dimensions 
+    spriteWidth: 150,
+    spriteHeight: 150,
 
 }
 
