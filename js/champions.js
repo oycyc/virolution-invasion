@@ -3,19 +3,12 @@ import { collision } from './utils.js';
 import { Projectile } from './projectiles.js';
 import { floatingMessage } from './floatingMessage.js';
 
-const files = {
-    champion1: new Image(),
-    champion2: new Image(),
-}
 
-files.champion1.src = "./assets/sprites/plant.png";
-files.champion1.src = "./assets/test3.png";
-files.champion2.src = "./assets/test4.png";
 
 
 class Champion {
     constructor(x, y) {
-        this.chosenChampion = chosenChampion;
+        this.selectedChampionIndex = constants.selectedChampionIndex;
         this.x = x;
         this.y = y;
         // display dimensions 
@@ -48,27 +41,14 @@ class Champion {
         constants.ctx.font = "30px Arial";
         constants.ctx.fillText(Math.floor(this.health), this.x + 15, this.y + 5);
 
-
-        if (this.chosenChampion === 0) {
-            // constants.ctx.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh);
-            constants.ctx.drawImage(files.champion1,
-                this.frameX * this.spriteWidth,
-                0,
-                this.spriteWidth,
-                this.spriteHeight,
-                this.x,
-                this.y,
-                this.width, this.height);
-        } else if (this.chosenChampion === 1) {
-            constants.ctx.drawImage(files.champion2,
-                this.frameX * this.spriteWidth,
-                0,
-                this.spriteWidth,
-                this.spriteHeight,
-                this.x,
-                this.y,
-                this.width, this.height);
-        }
+        constants.ctx.drawImage(constants.championFiles[this.selectedChampionIndex],
+            this.frameX * this.spriteWidth,
+            0,
+            this.spriteWidth,
+            this.spriteHeight,
+            this.x,
+            this.y,
+            this.width, this.height);
 
     }
 
@@ -125,7 +105,6 @@ export function updateChampionsFrame() {
 
 
 // choose the fighter
-let chosenChampion = -1;
 
 const fighters = [
     document.getElementById("mask-fighter"),
@@ -137,13 +116,13 @@ fighters.forEach((fighter, index) => {
         // when selected same champion twice, remove the selection
         if (fighter.classList.contains("active-selection")) {
             fighter.classList.remove("active-selection");
-            chosenChampion = -1;
+            resetChampionIndex();
             return;
         }
 
         removeActiveBorders();
         fighter.classList.add("active-selection")
-        chosenChampion = index;
+        constants.selectedChampionIndex = index;
     
         
     })
@@ -153,6 +132,10 @@ const removeActiveBorders = () => {
     fighters.forEach(fighter => {
         fighter.classList.remove("active-selection");
     })
+}
+
+const resetChampionIndex = () => {
+    constants.selectedChampionIndex = -1;
 }
 
 
@@ -169,11 +152,15 @@ constants.canvas.addEventListener("click", function() {
             return;
         }
     }
+    
+
 
     let championCost = 100;
-    if (constants.numberOfResources >= championCost && chosenChampion >= 0) {
+    if (constants.numberOfResources >= championCost && constants.selectedChampionIndex >= 0) {
         constants.champions.push(new Champion(gridPositionX, gridPositionY));
         constants.numberOfResources -= championCost;
+        removeActiveBorders();
+        resetChampionIndex();
         console.log("it works");
     } else {
         constants.floatingMessages.push(new floatingMessage("Need more resources! OR FIGHTER NOT SELECTED",

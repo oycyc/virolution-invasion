@@ -1,6 +1,8 @@
 import { constants } from './constants.js';
 import { collision } from './utils.js';
 
+
+
 class Cell {
     constructor(x, y,) {
         this.x = x;
@@ -15,7 +17,21 @@ class Cell {
             constants.ctx.strokeStyle = "black";
             constants.ctx.strokeRect(this.x, this.y, this.width, this.height);
             constants.ctx.fillText(`${this.x} ${this.y}`, this.x, this.y)
+            // draw preview frame of champion
+            if (constants.selectedChampionIndex >= 0) {
+                constants.ctx.globalAlpha = 0.4;
+                constants.ctx.drawImage(constants.championFiles[constants.selectedChampionIndex],
+                    0 * 150,
+                    0,
+                    150,
+                    150,
+                    this.x,
+                    this.y,
+                    constants.cellSize - constants.cellGap * 2, constants.cellSize - constants.cellGap * 2);
+                constants.ctx.globalAlpha = 1;
+            }
         }
+        
     }
 }
 

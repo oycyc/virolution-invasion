@@ -4,6 +4,7 @@ export const constants = {
     cellSize: 150,
     cellGap: 3,
     gameGrid: [],
+    selectedChampionIndex: -1,
     champions: [],
     enemies: [],
     enemyPositions: [],
@@ -29,6 +30,10 @@ export const constants = {
         height: 900
     },
 
+    championFiles: [new Image(), new Image()]
 
-    test: 1
+
 }
+
+constants.championFiles[0].src = "./assets/test3.png";
+constants.championFiles[1].src = "./assets/test4.png";
