@@ -1,4 +1,4 @@
-import { constants } from './constants.js';
+import { elements, constants } from './constants.js';
 import { startEventListeners } from './eventListeners.js';
 
 import { createGrid, handleGameGrid } from './GameBoard.js';
@@ -31,18 +31,26 @@ const animate = () => {
     handleGameStatus();
     handleFloatingMessages();
     constants.frame++;
+    
+
+
     // requestAnimationFrame() are paused when frame is hidden/running background tabs
     if (!constants.gameOver) requestAnimationFrame(animate);
 }
 
-startEventListeners();
-createGrid();
-animate();
+const startGame = () => {
+    elements.startScreen.remove();
+    // show the game canvas
+    elements.mainContainer.classList.remove("start-no-display");
+    
+    startEventListeners();
+    createGrid();
+    animate();    
+}
 
-// setTimeout(() => {
-//     createGrid();
-//     animate();
-// }, 3000)
+elements.startGameBtn.addEventListener("click", () => {
+    startGame();
+})
 
 
 

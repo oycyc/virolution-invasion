@@ -3,7 +3,7 @@ html, body {
 }
 
 body {
-    background-image: url("../assets/waves_repeating_green.png");
+    /* background-image: url("../assets/waves_repeating_green.png"); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -17,7 +17,29 @@ img {
     -moz-user-drag: none;
     -o-user-drag: none;
     user-drag: none;
-  }
+}
+
+
+.start-no-display {
+    display: none !important;
+}
+
+
+
+
+
+/* Starting Screen */
+#starting-screen {
+    background-image: url("../assets/test_main.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0; 
+    height: 100%;
+}
+
+
+
 
 
 

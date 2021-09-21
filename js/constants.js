@@ -1,3 +1,13 @@
+export const elements = {
+    // starting screen
+    startScreen: document.getElementById("starting-screen"),
+    startGameBtn: document.getElementById("start-btn"),
+    // actual game
+    mainContainer: document.getElementById("main"),
+    gameCanvas: document.getElementById("canvas"),
+
+}
+
 export const constants = {
     canvas: document.getElementById("canvas"),
     ctx: canvas.getContext("2d"),
@@ -30,9 +40,14 @@ export const constants = {
         height: 900
     },
 
-    championFiles: [new Image(), new Image()], 
+    championFiles: [new Image(), new Image()],
+    testingImg : new Image(), 
 
 }
+
+constants.testingImg.src = "./assets/random.jpg";
+
+
 
 export const championConsts = {
     // display dimensions (grid)
