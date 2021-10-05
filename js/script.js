@@ -35,7 +35,7 @@ const animate = () => {
 
 
     // requestAnimationFrame() are paused when frame is hidden/running background tabs
-    if (!constants.gameOver) requestAnimationFrame(animate);
+    if (!constants.gameOver && constants.tutorialFinished) requestAnimationFrame(animate);
 }
 
 const startGame = () => {

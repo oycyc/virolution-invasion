@@ -1,14 +1,8 @@
 html, body {
-    height: 100%
-}
-
-body {
-    /* background-image: url("../assets/waves_repeating_green.png"); */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    height: 100%;
     margin: 0;
 }
+
 
 /* prevent images from being dragged & ghost images*/
 img {
@@ -50,6 +44,13 @@ img {
     color: white;
     /* grid-template-columns: 1fr auto 1fr; */
     grid-template-columns: 1fr auto 1fr;
+
+    /*  */
+    background-image: url("../assets/waves_repeating_green.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
 }
 
 #champion-selection {

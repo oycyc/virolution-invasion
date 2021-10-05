@@ -42,6 +42,7 @@ export const constants = {
 
     championFiles: [new Image(), new Image()],
     testingImg : new Image(), 
+    tutorialFinished: true,
 
 }
 
@@ -59,5 +60,5 @@ export const championConsts = {
 
 }
 
-constants.championFiles[0].src = "./assets/test3.png";
-constants.championFiles[1].src = "./assets/test4.png";
+constants.championFiles[0].src = "./assets/champion-sprites/test3.png";
+constants.championFiles[1].src = "./assets/champion-sprites/vaccine-sprite.png";

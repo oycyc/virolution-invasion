@@ -47,7 +47,6 @@ class Champion {
             this.x,
             this.y,
             championConsts.width, championConsts.height);
-        constants.ctx.drawImage(constants.testingImg, 0 ,0)
     }
 
     update() {
