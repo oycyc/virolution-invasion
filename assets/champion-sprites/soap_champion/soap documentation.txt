@@ -3,7 +3,7 @@ adjust pic remove arm and needle and additional leftover pixels (stickermule.com
 
 open stickman in paint.net
 delete old head
-add another layer, use resized head and paste in (VACCINE: TIP OF VACCINE >= 150 for Y POS)
+add another layer, use resized head and paste in (VACCINE: TIP OF VACCINE >= 150 for Y POS) (only paste exact position for idles, others move around)
 save pdn
 flatten
 save png
@@ -12,7 +12,7 @@ crop (see below) and resize to 150x150
 
 idle is 1 and 2 (crop 535x535 position 80,142)
 attack is 1 2 3 5 (crop 540x540, position 80,144)
-die 1-6 experimental 1 2 4 (last frame copy of 4, change opacity of head 175 body 110) - MOVE BODY UP AND MERGE DOWN INTO HEAD
+die 1-6 experimental 1 2 4 (last frame copy of 4, change opacity of head 175 body 110, crop body if needed to fit head) - MOVE BODY UP AND MERGE DOWN INTO HEAD
 (540x540 50,144)
 
 https://www.codeandweb.com/free-sprite-sheet-packer
