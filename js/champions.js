@@ -60,6 +60,8 @@ class Champion {
         
         // if champion sprite sheet has different frames, use if elif to adjust
         if (this.shooting) {
+            // this.minFrame = 2;
+            // this.maxFrame = 5;
             this.minFrame = 2;
             this.maxFrame = 5;
         } else {
@@ -105,7 +107,8 @@ export function updateChampionsFrame() {
 
 const fighters = [
     document.getElementById("mask-fighter"),
-    document.getElementById("vaccine-fighter")
+    document.getElementById("vaccine-fighter"),
+    document.getElementById("soap-fighter")
 ];
 
 fighters.forEach((fighter, index) => {
