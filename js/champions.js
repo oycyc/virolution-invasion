@@ -70,7 +70,7 @@ class Champion {
         }
 
         if (this.shooting && this.shootNow) {
-            constants.projectiles.push(new Projectile(this.x + 70, this.y + 50));
+            constants.projectiles.push(new Projectile(this.x + 70, this.y + 50, this.selectedChampionIndex));
             this.shootNow = false;
         }
     }
@@ -108,7 +108,8 @@ export function updateChampionsFrame() {
 const fighters = [
     document.getElementById("mask-fighter"),
     document.getElementById("vaccine-fighter"),
-    document.getElementById("soap-fighter")
+    document.getElementById("soap-fighter"),
+    document.getElementById("pill-fighter"),
 ];
 
 fighters.forEach((fighter, index) => {

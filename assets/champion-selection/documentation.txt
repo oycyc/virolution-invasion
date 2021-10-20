@@ -1,0 +1,6 @@
+1.) stickermule trace original picture
+2.) change canvas size so it's a square (add additional pixels to make it even)
+3.) resize 250x250
+
+
+for pill: stickermule automatically centers it when it cuts out background!
