@@ -40,7 +40,7 @@ export const constants = {
         height: 900
     },
 
-    championFiles: [new Image(), new Image(), new Image()],
+    championFiles: [new Image(), new Image(), new Image(), new Image()],
     testingImg : new Image(), 
     tutorialFinished: true,
 
@@ -63,3 +63,4 @@ export const championConsts = {
 constants.championFiles[0].src = "./assets/champion-sprites/test3.png";
 constants.championFiles[1].src = "./assets/champion-sprites/vaccine-sprite.png";
 constants.championFiles[2].src = "./assets/champion-sprites/soap-sprite.png";
+constants.championFiles[3].src = "./assets/champion-sprites/pill-sprite.png";
