@@ -1,0 +1,6 @@
+use all attack sprites
+death sprites 0-9 then 18 then 19 transparent (175 opacity in paint.net)
+all pulse as walking
+
+resize all 150x150
+then sprite pack
