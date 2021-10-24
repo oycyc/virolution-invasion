@@ -70,7 +70,7 @@ class Champion {
         }
 
         if (this.shooting && this.shootNow) {
-            constants.projectiles.push(new Projectile(this.x + 70, this.y + 50, this.selectedChampionIndex));
+            constants.projectiles.push(new Projectile(this.x + 70, this.y + 33.5, this.selectedChampionIndex));
             this.shootNow = false;
         }
     }
@@ -89,6 +89,9 @@ export function updateChampionsFrame() {
         for (let j = 0; j < constants.enemies.length; j++) {
             if (constants.champions[i] && collision(constants.champions[i], constants.enemies[j])) {
                 constants.enemies[j].movement = 0;
+                // change animation to attack (8-14 frame on sprite)
+                constants.enemies[j].minFrame = 8;
+                constants.enemies[j].maxFrame = 14;
                 constants.champions[i].health -= 0.2;
             }
 

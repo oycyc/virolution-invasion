@@ -11,7 +11,7 @@ const championProjectiles = [ // corresponds w/ the index of fighters
 
 championProjectiles[0].src = "./assets/champion-projectiles/mask-projectile.png";
 championProjectiles[1].src = "./assets/champion-projectiles/vaccine-projectile.png";
-championProjectiles[2].src = "./assets/champion-projectiles/soap-bubble-projectile.png";
+championProjectiles[2].src = "./assets/champion-projectiles/soap-projectile.png";
 championProjectiles[3].src = "./assets/champion-projectiles/pill-projectile.png";
 
 

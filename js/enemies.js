@@ -3,8 +3,8 @@ import { floatingMessage } from './floatingMessage.js';
 
 
 const enemyTypes = [new Image(), new Image()];
-enemyTypes[0].src = "./assets/sprites/dino.png";
-enemyTypes[1].src = "./assets/sprites/dino2.png";
+enemyTypes[0].src = "./assets/virus-sprites/level1/level1sprite.png";
+enemyTypes[1].src = "./assets/virus-sprites/level1/level1sprite.png";
 
 class Enemy {
     constructor(verticalPosition) {
@@ -22,8 +22,8 @@ class Enemy {
         this.frameY = 0;
         this.minFrame = 0;
         this.maxFrame = 7;
-        this.spriteWidth = 680;
-        this.spriteHeight = 472;
+        this.spriteWidth = 150;
+        this.spriteHeight = 150;
     }
 
     update() {
@@ -36,8 +36,6 @@ class Enemy {
     }
 
     draw() {
-        // constants.ctx.fillStyle = "red";
-        // constants.ctx.fillRect(this.x, this.y, this.width, this.height);
         constants.ctx.fillStyle = "black";
         constants.ctx.font = "30px Arial";
         constants.ctx.fillText(Math.floor(this.health), this.x + 15, this.y + 25);
