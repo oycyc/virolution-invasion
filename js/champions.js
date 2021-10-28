@@ -89,9 +89,7 @@ export function updateChampionsFrame() {
         for (let j = 0; j < constants.enemies.length; j++) {
             if (constants.champions[i] && collision(constants.champions[i], constants.enemies[j])) {
                 constants.enemies[j].movement = 0;
-                // change animation to attack (8-14 frame on sprite)
-                constants.enemies[j].minFrame = 8;
-                constants.enemies[j].maxFrame = 14;
+                constants.enemies[j].attacking = true;
                 constants.champions[i].health -= 0.2;
             }
 

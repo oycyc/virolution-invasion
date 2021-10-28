@@ -2,9 +2,11 @@ import { constants } from './constants.js';
 import { floatingMessage } from './floatingMessage.js';
 
 
-const enemyTypes = [new Image(), new Image()];
+const enemyTypes = [new Image(), new Image(), new Image(), new Image()];
 enemyTypes[0].src = "./assets/virus-sprites/level1/level1sprite.png";
-enemyTypes[1].src = "./assets/virus-sprites/level1/level1sprite.png";
+enemyTypes[1].src = "./assets/virus-sprites/level2/level2sprite.png";
+enemyTypes[2].src = "./assets/virus-sprites/level3/level3sprite.png";
+enemyTypes[3].src = "./assets/virus-sprites/level4/level4sprite.png";
 
 class Enemy {
     constructor(verticalPosition) {
@@ -24,9 +26,19 @@ class Enemy {
         this.maxFrame = 7;
         this.spriteWidth = 150;
         this.spriteHeight = 150;
+        this.attacking = false;
     }
 
     update() {
+        if (this.attacking) { // attacking sprites
+            this.minFrame = 8;
+            this.maxFrame = 14;
+        }
+        if (this.movement != 0) { // movement = 0 when attacking, default walking sprites
+            this.minFrame = 0;
+            this.maxFrame = 7;
+        }
+
         this.x -= this.movement;
         if (constants.frame % 8 === 0) {
             if (this.frameX < this.maxFrame) this.frameX++;

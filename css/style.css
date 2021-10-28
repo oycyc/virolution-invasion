@@ -1,3 +1,11 @@
+:root {
+    --colorShadeA: rgb(106, 163, 137);
+    --colorShadeB: rgb(121, 186, 156);
+    --colorShadeC: rgb(150, 232, 195);
+    --colorShadeD: rgb(187, 232, 211);
+    --colorShadeE: rgb(205, 255, 232);
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -24,13 +32,86 @@ img {
 
 /* Starting Screen */
 #starting-screen {
-    background-image: url("../assets/test_main.jpg");
+    background-image: url("../assets/background/resized.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0; 
     height: 100%;
+
+    display: grid;
 }
+
+
+*::before, *::after {
+    box-sizing: border-box;
+}
+
+#starting-menu {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+  
+.starting-menu-btn {
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: 1.5rem;
+    color:var(--colorShadeA);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: inherit;
+    padding: 1em 2em;
+    border: 2px solid var(--colorShadeA);
+    border-radius: 1em;
+    background: var(--colorShadeE);
+    transform-style: preserve-3d;
+    transition: all 175ms cubic-bezier(0, 0, 1, 1);
+}
+
+.starting-menu-btn::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--colorShadeC);
+    border-radius: inherit;
+    box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.75em 0 0 var(--colorShadeA);
+    transform: translate3d(0, 0.75em, -1em);
+    transition: all 175ms cubic-bezier(0, 0, 1, 1);
+}
+  
+  
+.starting-menu-btn:hover {
+    background: var(--colorShadeD);
+    transform: translate(0, 0.375em);
+}
+  
+.starting-menu-btn:hover::before {
+    transform: translate3d(0, 0.75em, -1em);
+}
+  
+.starting-menu-btn:active {
+    transform: translate(0em, 0.75em);
+}
+  
+.starting-menu-btn:active::before {
+    transform: translate3d(0, 0, -1em);
+    box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
+}
+
+
+
+
+
+
 
 
 
@@ -46,7 +127,9 @@ img {
     grid-template-columns: 1fr auto 1fr;
 
     /*  */
-    background-image: url("../assets/waves_repeating_green.png");
+    /* background-image: url("../assets/waves_repeating_green.png");
+     */
+    background-image: url("../assets/background/level1.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
