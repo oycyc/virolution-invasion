@@ -6,6 +6,10 @@
     --colorShadeE: rgb(205, 255, 232);
 }
 
+*::before, *::after {
+    box-sizing: border-box;
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -40,17 +44,21 @@ img {
     height: 100%;
 
     display: grid;
+    align-content: center; /* aligns the actual content (menu btns) center */
+    justify-items: center; /* justify EVERYTHING (including pos: abs) center */
 }
 
-
-*::before, *::after {
-    box-sizing: border-box;
+#starting-game-logo {
+    /* position: absolute; */
+    margin-top: -3.5em;
 }
 
 #starting-menu {
     display: grid;
     align-content: center;
     justify-content: center;
+    grid-row-gap: 2.75em;
+    /* padding-top: 3em; */
 }
   
 .starting-menu-btn {
@@ -59,12 +67,12 @@ img {
     border: 0;
     vertical-align: middle;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.25em;
     color:var(--colorShadeA);
     font-weight: 700;
     text-transform: uppercase;
     font-family: inherit;
-    padding: 1em 2em;
+    padding: 0.6em 1.75em;
     border: 2px solid var(--colorShadeA);
     border-radius: 1em;
     background: var(--colorShadeE);
