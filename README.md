@@ -1,9 +1,6 @@
-# infection-prevention
-- name ideas:
-- virus evolution invasion
+# Virolution Invasion
 
-## roadmap
--
+
 
 
 
