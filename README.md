@@ -1,6 +1,8 @@
 # Virolution Invasion
 
 
+## bosses
+- https://bevouliin.com/furry-monster-free-2d-game-asset/
 
 
 
@@ -16,6 +18,7 @@
 
 - powerups ask trivia question cooldown
 
+- performance
 
 ## non essential
 - add hurt animation for champs and enemies

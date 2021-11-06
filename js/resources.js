@@ -2,6 +2,8 @@ import { constants } from './constants.js';
 import { floatingMessage } from './floatingMessage.js';
 import { collision } from './utils.js';
 
+import { createSoundEffect } from './soundEffects.js';
+
 const amounts = [20, 30, 40, 50];
 
 // resources to include:
@@ -61,6 +63,7 @@ export function handleResources() {
         constants.resources[i].update();
         constants.resources[i].draw();
         if (constants.resources[i] && constants.mouse.x && constants.mouse.y && collision(constants.resources[i], constants.mouse)) {
+            createSoundEffect();
             constants.numberOfResources += constants.resources[i].amount;
             constants.floatingMessages.push(new floatingMessage("+" + constants.resources[i].amount,
             constants.resources[i].x,

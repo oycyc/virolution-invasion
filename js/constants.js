@@ -46,7 +46,6 @@ export const constants = {
 
 }
 
-constants.testingImg.src = "./assets/random.jpg";
 
 
 
