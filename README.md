@@ -14,7 +14,6 @@
 - change every function from "handlexyz" to "updatechampionframe"
 
 - if in idle, slower update frame
-- remove the arms from vaccine head
 
 - powerups ask trivia question cooldown
 
