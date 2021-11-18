@@ -1,6 +1,6 @@
 import { constants } from './constants.js';
 import { championConsts } from './constants.js';
-import { collision } from './utils.js';
+import { collision, HSLToHex } from './utils.js';
 import { Projectile } from './projectiles.js';
 import { floatingMessage } from './floatingMessage.js';
 
@@ -31,13 +31,54 @@ class Champion {
         this.health = 100;
         this.timer = 0;
         
+        this.hue = 100;
 
+    }
+    
+    healthBar() {
+        // x0, y0, x1, y2
+        var grd = constants.ctx.createLinearGradient(this.x + 15, this.y - 2,
+            this.x + 15 + Math.floor(this.health), this.y - 2);
+        // light blue
+        if (this.health >= 40) {
+            grd.addColorStop(0, '#00b09b');
+            grd.addColorStop(1, '#96c93d');
+        } else {
+            grd.addColorStop(0, '#cb356b');
+            grd.addColorStop(1, '#bd3f32');
+        }
+
+        // dark blue #cb356b #bd3f32
+        // grd.addColorStop(0.6, '#2E7F18');
+        // grd.addColorStop(1, '#2E7F18');
+
+        constants.ctx.strokeStyle = "gray";
+        constants.ctx.beginPath();
+        constants.ctx.moveTo(this.x + 15, this.y - 2);
+        constants.ctx.lineWidth = 5;
+        constants.ctx.lineCap = "round";
+        constants.ctx.lineTo(this.x + 15 + 100, this.y -2);
+        constants.ctx.stroke();
+
+        constants.ctx.strokeStyle = grd;
+        constants.ctx.beginPath();
+        constants.ctx.moveTo(this.x + 15, this.y - 2);
+        constants.ctx.lineWidth = 5;
+        constants.ctx.lineCap = "round";
+        constants.ctx.lineTo(this.x + 15 + Math.floor(this.health), this.y - 2);
+        constants.ctx.stroke();
+        
+
+        // console.log(this.currentValue)
+        // console.log("---")
+        // console.log(this.endValue)
     }
 
     draw() {
         constants.ctx.fillStyle = "black";
         constants.ctx.font = "30px Arial";
         constants.ctx.fillText(Math.floor(this.health), this.x + 15, this.y + 5);
+        this.healthBar();
 
         constants.ctx.drawImage(constants.championFiles[this.selectedChampionIndex],
             this.frameX * championConsts.spriteWidth,
@@ -48,6 +89,8 @@ class Champion {
             this.y,
             championConsts.width, championConsts.height);
     }
+
+
 
     update() {
         if (constants.frame % 25 === 0) {
