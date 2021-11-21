@@ -1,6 +1,6 @@
 import { constants } from './constants.js';
 import { championConsts } from './constants.js';
-import { collision, HSLToHex } from './utils.js';
+import { collision } from './utils.js';
 import { Projectile } from './projectiles.js';
 import { floatingMessage } from './floatingMessage.js';
 
@@ -37,10 +37,10 @@ class Champion {
     
     healthBar() {
         // x0, y0, x1, y2
-        var grd = constants.ctx.createLinearGradient(this.x + 15, this.y - 2,
-            this.x + 15 + Math.floor(this.health), this.y - 2);
+        var grd = constants.ctx.createLinearGradient(this.x + 15 + 17.5, this.y - 2,
+            this.x + 15 + Math.floor(this.health * 0.75) + 17.5, this.y - 2);
         // light blue
-        if (this.health >= 40) {
+        if (this.health >= 50) {
             grd.addColorStop(0, '#00b09b');
             grd.addColorStop(1, '#96c93d');
         } else {
@@ -54,18 +54,18 @@ class Champion {
 
         constants.ctx.strokeStyle = "gray";
         constants.ctx.beginPath();
-        constants.ctx.moveTo(this.x + 15, this.y - 2);
+        constants.ctx.moveTo(this.x + 15 + 17.5, this.y - 2);
         constants.ctx.lineWidth = 5;
         constants.ctx.lineCap = "round";
-        constants.ctx.lineTo(this.x + 15 + 100, this.y -2);
+        constants.ctx.lineTo(this.x + 15 + (100 * 0.75) + 17.5, this.y -2);
         constants.ctx.stroke();
 
         constants.ctx.strokeStyle = grd;
         constants.ctx.beginPath();
-        constants.ctx.moveTo(this.x + 15, this.y - 2);
+        constants.ctx.moveTo(this.x + 15 + 17.5, this.y - 2);
         constants.ctx.lineWidth = 5;
         constants.ctx.lineCap = "round";
-        constants.ctx.lineTo(this.x + 15 + Math.floor(this.health), this.y - 2);
+        constants.ctx.lineTo(this.x + 15 + Math.floor(this.health  * 0.75) + 17.5, this.y - 2);
         constants.ctx.stroke();
         
 
