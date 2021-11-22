@@ -9,6 +9,7 @@ export const elements = {
 }
 
 export const constants = {
+    debugMode: null,
     canvas: document.getElementById("canvas"),
     ctx: canvas.getContext("2d"),
     cellSize: 150,

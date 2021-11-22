@@ -14,9 +14,12 @@ class Cell {
     draw() {
         // make sure mouse has a position and it's colliding
         if (constants.mouse.x && constants.mouse.y && collision(this, constants.mouse)) {
-            constants.ctx.strokeStyle = "black";
-            constants.ctx.strokeRect(this.x, this.y, this.width, this.height);
-            constants.ctx.fillText(`${this.x} ${this.y}`, this.x, this.y)
+            if (constants.debugMode) {
+                constants.ctx.strokeStyle = "black";
+                constants.ctx.strokeRect(this.x, this.y, this.width, this.height);
+                constants.ctx.fillText(`${this.x} ${this.y}`, this.x, this.y)
+            }
+    
             // draw preview frame of champion
             if (constants.selectedChampionIndex >= 0) {
                 constants.ctx.globalAlpha = 0.4;

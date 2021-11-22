@@ -4,7 +4,9 @@ import { collision } from './utils.js';
 import { Projectile } from './projectiles.js';
 import { floatingMessage } from './floatingMessage.js';
 
-
+const healthPaddingX = 32.5;
+const healthPaddingY = -2;
+const healthLineWidth = 5;
 
 
 class Champion {
@@ -25,60 +27,51 @@ class Champion {
         this.maxFrame = 5;
 
 
-
         // make maxFrame and health arguments
         // timer used for special effects particular to this champion, perhaps ability
         this.health = 100;
         this.timer = 0;
-        
-        this.hue = 100;
-
     }
     
-    healthBar() {
-        // x0, y0, x1, y2
-        var grd = constants.ctx.createLinearGradient(this.x + 15 + 17.5, this.y - 2,
-            this.x + 15 + Math.floor(this.health * 0.75) + 17.5, this.y - 2);
-        // light blue
-        if (this.health >= 50) {
+    displayHealthBar() { // displays health bar in 75% size (relative to 100) to take less space
+        // x0, y0: starting point (beginning of health bar) - x1, y2: ending point (current health)
+        const grd = constants.ctx.createLinearGradient(this.x + healthPaddingX, this.y + healthPaddingY,
+            this.x + Math.floor(this.health * 0.75) + healthPaddingX, this.y + healthPaddingY);
+
+        if (this.health >= 50) { // green gradient
             grd.addColorStop(0, '#00b09b');
             grd.addColorStop(1, '#96c93d');
-        } else {
+        } else { // red gradient
             grd.addColorStop(0, '#cb356b');
             grd.addColorStop(1, '#bd3f32');
         }
 
-        // dark blue #cb356b #bd3f32
-        // grd.addColorStop(0.6, '#2E7F18');
-        // grd.addColorStop(1, '#2E7F18');
-
+        // draws the gray full background health bar
         constants.ctx.strokeStyle = "gray";
         constants.ctx.beginPath();
-        constants.ctx.moveTo(this.x + 15 + 17.5, this.y - 2);
-        constants.ctx.lineWidth = 5;
+        constants.ctx.moveTo(this.x + healthPaddingX, this.y + healthPaddingY);
+        constants.ctx.lineWidth = healthLineWidth;
         constants.ctx.lineCap = "round";
-        constants.ctx.lineTo(this.x + 15 + (100 * 0.75) + 17.5, this.y -2);
+        constants.ctx.lineTo(this.x + (100 * 0.75) + healthPaddingX, this.y + healthPaddingY);
         constants.ctx.stroke();
-
+        // draws the current health in the bar with the gradient
         constants.ctx.strokeStyle = grd;
         constants.ctx.beginPath();
-        constants.ctx.moveTo(this.x + 15 + 17.5, this.y - 2);
-        constants.ctx.lineWidth = 5;
+        constants.ctx.moveTo(this.x + healthPaddingX, this.y + healthPaddingY);
+        constants.ctx.lineWidth = healthLineWidth;
         constants.ctx.lineCap = "round";
-        constants.ctx.lineTo(this.x + 15 + Math.floor(this.health  * 0.75) + 17.5, this.y - 2);
+        constants.ctx.lineTo(this.x + Math.floor(this.health  * 0.75) + healthPaddingX, this.y + healthPaddingY);
         constants.ctx.stroke();
-        
-
-        // console.log(this.currentValue)
-        // console.log("---")
-        // console.log(this.endValue)
     }
 
     draw() {
-        constants.ctx.fillStyle = "black";
-        constants.ctx.font = "30px Arial";
-        constants.ctx.fillText(Math.floor(this.health), this.x + 15, this.y + 5);
-        this.healthBar();
+        if (constants.debugMode) { // write out actual health (health/100)
+            constants.ctx.fillStyle = "black";
+            constants.ctx.font = "30px Arial";
+            constants.ctx.fillText(Math.floor(this.health), this.x + 15, this.y + 5);
+        }
+
+        this.displayHealthBar();
 
         constants.ctx.drawImage(constants.championFiles[this.selectedChampionIndex],
             this.frameX * championConsts.spriteWidth,

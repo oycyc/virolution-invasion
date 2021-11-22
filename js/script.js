@@ -21,6 +21,8 @@ constants.ctx.mozImageSmoothingEnabled = false;
 constants.ctx.msImageSmoothingEnabled = false;
 constants.ctx.imageSmoothingEnabled = false;
 
+constants.debugMode = true;
+
 const animate = () => {
     handleControlsBar();
     handleGameGrid();
