@@ -15,16 +15,6 @@ files[1] = new Image();
 files[1].src = "./assets/resources/syringe.png";
 
 
-// constants.ctx.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh);
-// constants.ctx.drawImage(files.champion1,
-//     this.frameX * this.spriteWidth,
-//     0,
-//     this.spriteWidth,
-//     this.spriteHeight,
-//     this.x,
-//     this.y,
-//     this.width, this.height);
-
 
 class Resource {
     constructor() {
@@ -42,15 +32,18 @@ class Resource {
     update() {
         if (this.y < this.finalY) {
             this.y += this.speed;
-
         }
     }
 
     draw() {
+        // constants.ctx.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh);
         constants.ctx.drawImage(this.resourceFile, 0, 0, 64, 64, this.x, this.y, this.width, this.height);
-        constants.ctx.fillStyle = "black";
-        constants.ctx.font = "20px Arial";
-        constants.ctx.fillText(this.amount, this.x + 15, this.y + 25);
+        if (constants.debugMode) {
+            constants.ctx.fillStyle = "black";
+            constants.ctx.font = "20px Arial";
+            constants.ctx.fillText(this.amount, this.x + 15, this.y + 25);
+        }
+
     }
 }
 
