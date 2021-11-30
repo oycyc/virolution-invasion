@@ -62,6 +62,8 @@ class Champion {
         constants.ctx.lineCap = "round";
         constants.ctx.lineTo(this.x + Math.floor(this.health  * 0.75) + healthPaddingX, this.y + healthPaddingY);
         constants.ctx.stroke();
+        // reset lineWidth
+        constants.ctx.lineWidth = 1;
     }
 
     draw() {

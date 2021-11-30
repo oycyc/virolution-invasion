@@ -48,9 +48,12 @@ class Enemy {
     }
 
     draw() {
-        constants.ctx.fillStyle = "black";
-        constants.ctx.font = "30px Arial";
-        constants.ctx.fillText(Math.floor(this.health), this.x + 15, this.y + 25);
+        if (constants.debugMode) {
+            constants.ctx.fillStyle = "black";
+            constants.ctx.font = "30px Arial";
+            constants.ctx.fillText(Math.floor(this.health), this.x + 15, this.y + 25);
+        }
+
         // constants.ctx.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh);
         constants.ctx.drawImage(this.enemyType,
             this.frameX * this.spriteWidth,

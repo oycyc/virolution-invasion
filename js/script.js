@@ -1,5 +1,5 @@
 import { elements, constants } from './constants.js';
-import { startEventListeners } from './eventListeners.js';
+import { startEventListeners, modalEventListeners } from './eventListeners.js';
 
 import { createGrid, handleGameGrid } from './GameBoard.js';
 
@@ -22,6 +22,12 @@ constants.ctx.msImageSmoothingEnabled = false;
 constants.ctx.imageSmoothingEnabled = false;
 
 constants.debugMode = true;
+
+
+// On load
+modalEventListeners();
+
+
 
 const animate = () => {
     handleControlsBar();
@@ -63,46 +69,3 @@ elements.startGameBtn.addEventListener("click", () => {
 
 
 
-
-
-
-
-/*********************************************
-  MODALS
- *********************************************/
-const openModalButtons = document.querySelectorAll("[data-modal-target]");
-const closeModalButtons = document.querySelectorAll("[data-close-button]");
-const overlay = document.getElementById("overlay");
-
-openModalButtons.forEach(item => {
-	item.addEventListener("click", () => {
-		const modal = document.querySelector(item.dataset.modalTarget);
-		openModal(modal);
-	})
-});
-
-closeModalButtons.forEach(item => {
-	item.addEventListener("click", () => {
-		const modal = item.closest(".modal");
-		closeModal(modal);
-	})
-});
-
-overlay.addEventListener("click", () => {
-	const modals = document.querySelectorAll(".modal.active");
-	modals.forEach(modal => {
-		closeModal(modal);
-	})
-});
-
-function openModal(modal) {
-	if (modal == null) return;
-	modal.classList.add("active");
-	overlay.classList.add("active");
-};
-
-function closeModal(modal) {
-	if (modal == null) return;
-	modal.classList.remove("active");
-	overlay.classList.remove("active");
-};

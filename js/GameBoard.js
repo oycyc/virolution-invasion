@@ -20,9 +20,39 @@ class Cell {
                 constants.ctx.fillText(`${this.x} ${this.y}`, this.x, this.y)
             }
     
+
+            // if (constants.selectedChampionIndex >= 0) {
+            //     constants.ctx.globalAlpha = 0.45;
+            //     constants.ctx.drawImage(constants.championFiles[constants.selectedChampionIndex],
+            //         0, // x frame of the sprite
+            //         0, // y frame
+            //         championConsts.spriteWidth,
+            //         championConsts.spriteHeight,
+            //         this.x,
+            //         this.y,
+            //         championConsts.width, championConsts.height);
+            //     constants.ctx.globalAlpha = 1;
+            // }
+
+
+
+            // for (const champion of constants.champions) {
+            //     if (champion.x === gridPositionX && champion.y === gridPositionY) {
+            //         return;
+            //     }
+            // }
+
+            // calculate grid position at this point
+            const gridPositionX = constants.mouse.x - (constants.mouse.x % constants.cellSize) + constants.cellGap;
+            const gridPositionY = constants.mouse.y - (constants.mouse.y % constants.cellSize) + constants.cellGap;
             // draw preview frame of champion
             if (constants.selectedChampionIndex >= 0) {
-                constants.ctx.globalAlpha = 0.4;
+                for (const champion of constants.champions) {
+                    if (champion.x === gridPositionX && champion.y === gridPositionY) {
+                        return;
+                    }
+                }
+                constants.ctx.globalAlpha = 0.45;
                 constants.ctx.drawImage(constants.championFiles[constants.selectedChampionIndex],
                     0, // x frame of the sprite
                     0, // y frame
@@ -33,6 +63,8 @@ class Cell {
                     championConsts.width, championConsts.height);
                 constants.ctx.globalAlpha = 1;
             }
+
+            
         }
     }
 }
