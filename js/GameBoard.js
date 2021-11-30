@@ -12,7 +12,7 @@ class Cell {
     }
 
     draw() {
-        // make sure mouse has a position and it's colliding
+        // If the mouse is touching this cell, then draw()
         if (constants.mouse.x && constants.mouse.y && collision(this, constants.mouse)) {
             if (constants.debugMode) {
                 constants.ctx.strokeStyle = "black";
@@ -20,35 +20,19 @@ class Cell {
                 constants.ctx.fillText(`${this.x} ${this.y}`, this.x, this.y)
             }
     
-
-            // if (constants.selectedChampionIndex >= 0) {
-            //     constants.ctx.globalAlpha = 0.45;
-            //     constants.ctx.drawImage(constants.championFiles[constants.selectedChampionIndex],
-            //         0, // x frame of the sprite
-            //         0, // y frame
-            //         championConsts.spriteWidth,
-            //         championConsts.spriteHeight,
-            //         this.x,
-            //         this.y,
-            //         championConsts.width, championConsts.height);
-            //     constants.ctx.globalAlpha = 1;
-            // }
-
-
-
-            // for (const champion of constants.champions) {
-            //     if (champion.x === gridPositionX && champion.y === gridPositionY) {
-            //         return;
-            //     }
-            // }
-
             // calculate grid position at this point
             const gridPositionX = constants.mouse.x - (constants.mouse.x % constants.cellSize) + constants.cellGap;
             const gridPositionY = constants.mouse.y - (constants.mouse.y % constants.cellSize) + constants.cellGap;
             // draw preview frame of champion
+            // ONLY if there is a selected champion AND there isn't already a champion on the cell 
             if (constants.selectedChampionIndex >= 0) {
+                console.log("!!!");
+                console.log(gridPositionX);
+                console.log(this.x);
+                console.log(this.width);
+                console.log(constants.cellGap);
                 for (const champion of constants.champions) {
-                    if (champion.x === gridPositionX && champion.y === gridPositionY) {
+                    if (champion.x === this.x + constants.cellGap && champion.y === this.y + constants.cellGap) {
                         return;
                     }
                 }
@@ -63,9 +47,8 @@ class Cell {
                     championConsts.width, championConsts.height);
                 constants.ctx.globalAlpha = 1;
             }
-
-            
         }
+
     }
 }
 
