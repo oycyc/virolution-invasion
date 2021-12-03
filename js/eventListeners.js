@@ -1,4 +1,5 @@
 import { constants } from './constants.js';
+import { elements } from './constants.js';
 
 const aspectRatio = 3 / 2;
 let canvasPosition;
@@ -60,7 +61,17 @@ export const startEventListeners = () => {
     constants.canvas.addEventListener("mouseup", () => {
         constants.mouse.clicked = false;
     })
+
+    elements.championTrash.addEventListener("click", () => {
+        constants.removalStatus = !constants.removalStatus;
+        document.getElementsByTagName("body")[0].classList.toggle("remove-champion-cursor");
+    })
 }
+
+
+
+
+
 
 // Modals
 function openModal(modal) {
@@ -97,3 +108,4 @@ export const modalEventListeners = () => {
         })
     });
 }
+

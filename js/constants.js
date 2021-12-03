@@ -5,6 +5,8 @@ export const elements = {
     // actual game
     mainContainer: document.getElementById("main"),
     gameCanvas: document.getElementById("canvas"),
+    // hud
+    championTrash: document.getElementById("destroy"),
 
 }
 
@@ -44,6 +46,7 @@ export const constants = {
     championFiles: [new Image(), new Image(), new Image(), new Image()],
     testingImg : new Image(), 
     tutorialFinished: true,
+    removalStatus: false,
 
 }
 

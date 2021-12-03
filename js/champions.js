@@ -181,15 +181,18 @@ const resetChampionIndex = () => {
 
 // place the units
 constants.canvas.addEventListener("click", function() {
-    // find out how this works..
+    // calculate current mouse position on the grid
     const gridPositionX = constants.mouse.x - (constants.mouse.x % constants.cellSize) + constants.cellGap;
     const gridPositionY = constants.mouse.y - (constants.mouse.y % constants.cellSize) + constants.cellGap;
     // end if clicked on top toolbar display
     if (gridPositionY < constants.cellSize) return;
-    // end if champion already exist in same position
+
     for (const champion of constants.champions) {
-        if (champion.x === gridPositionX && champion.y === gridPositionY) {
-            return;
+        if (champion.x === gridPositionX && champion.y === gridPositionY) { // checks if champion exists
+            if (constants.removalStatus) { // if removalStatus is true, then remove 
+                console.log("will remove this1!!");
+            }
+            return; // end if champion exists, no need to remove nor place new champion
         }
     }
     
